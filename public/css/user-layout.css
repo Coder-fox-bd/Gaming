@@ -1,0 +1,81 @@
+html,
+body {
+    height: 100%;
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
+#sticky-footer {
+    flex-shrink: none;
+}
+
+/* Other Classes for Page Styling */
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255,102,203);
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+body {
+    background-image: url("https://images8.alphacoders.com/818/thumb-1920-818978.png");
+}
+
+/*card*/
+.card {
+    margin-bottom: 30px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+    -moz-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+    box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+}
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6f2;
+}
+
+.card-title {}
+
+.card-subtitle {
+    font-size: 14px;
+}
+
+.card-body {}
+
+.card-text {}
+
+.card-footer {
+    border-top: 1px solid #e6e6f2;
+    background: #f6f6ff;
+}
+
+.card-link {}
+
+.toolbar {
+    font-size: 18px;
+}
+
+.card-header-title {
+    margin: 0;
+    line-height: 2;
+}
+
+.card-toolbar-tabs {}
+
+.card-toolbar-tabs .nav.nav-pills {}
+
+.card-toolbar-tabs .nav.nav-pills .nav-item {}
+
+.card-toolbar-tabs .nav.nav-pills .nav-item .nav-link {
+    font-size: 14px;
+    padding: 6px 10px;
+}
+
+.card-toolbar-tabs .nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #5969ff;
+    background-color: transparent;
+}

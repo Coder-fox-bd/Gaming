@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\AddGame;
+use App\AppAdmin;
+use Illuminate\Http\Request;
+use Illuminate\Http\File;
+
+class AdminHomeController extends Controller
+{
+    public function homeView(Request $request)
+    {
+        $Admin= AppAdmin::where('admin_id',$request->session()->get('loggedAdmin'))->get();
+        return view('Admin.admin-home')
+            ->with('admins',$Admin);
+    }
+
+    public function addGame(Request $request)
+    {
+        $request->validate([
+            'game_name'=>'required',
+            'game_types'=>'required',
+            'game_image' => 'mimes:jpg,jpeg,png,tiff',
+            'game_detail' => 'required|max:2000',
+        ]);
+        $AddGame = new AddGame();
+
+        $AddGame->game_name=$request->game_name;
+        $AddGame->game_types=$request->game_types;
+        if ($request->hasFile('game_image')) {
+            $image = $request->file('game_image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/games');
+            $image->move($destinationPath, $name);
+            $AddGame->game_image = $name;
+        }
+        $AddGame->game_detail=$request->game_detail;
+        $AddGame->save();
+        $request->session()->flash('message','Data Inserted Successfully');
+        return redirect('/p4m.admin.login/home');
+    }
+}
