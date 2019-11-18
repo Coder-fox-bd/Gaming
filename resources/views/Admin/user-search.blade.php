@@ -63,32 +63,36 @@
 
         <div class="row mt-2">
             <div class="col-12 p-0 mt-2">
-                <table class="table table-light text-center">
-                    <thead class="thead-dark border-0">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Player Name</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Add Balance</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
                     @if($searched_user)
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>{{$searched_user->user_first_name}} {{$searched_user->user_last_name}}</td>
-                            <td>{{$searched_user->user_username}}</td>
-                            <td><a data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-money-bill"></i></a></td>
-                            <td><a href="" style="color: red"><i class="fas fa-trash"></i></a></td>
-                        </tr>
-                    @else
-                        <div class="text-center">
-                            <h6 class="red-font">No Data Available</h6>
-                        </div>
+                        <table class="table table-light text-center">
+                            <thead class="thead-dark border-0">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Player Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Add Balance</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if($searched_user)
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{$searched_user->user_first_name}} {{$searched_user->user_last_name}}</td>
+                                    <td>{{$searched_user->user_username}}</td>
+                                    <td><a data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-money-bill"></i></a></td>
+                                    <td><a href="" style="color: red"><i class="fas fa-trash"></i></a></td>
+                                </tr>
+                            @else
+                                <div class="text-center">
+                                    <h6 class="red-font">No Data Available</h6>
+                                </div>
+                            @endif
+                            </tbody>
+                        </table>
                     @endif
-                    </tbody>
-                </table>
+                </div>
             </div>
         </div>
     </div>

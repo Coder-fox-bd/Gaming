@@ -42,16 +42,23 @@ class SubmitJoiningReqController extends Controller
                 'match_id'=>'required',
             ]);
 
-            $JoinMatch = new AppMatchJoinedPlayer();
+            if ($pre_balance->balance_amount<$Match->entry_fee){
+                $request->session()->flash('message2','You have insufficient Balance');
+                return back();
+            }else{
+                $JoinMatch = new AppMatchJoinedPlayer();
 
-            $JoinMatch->joined_user_id=$User->user_id;
-            $JoinMatch->match_id=$request->match_id;
-            $JoinMatch->game_user_name=$request->game_user_name;
-            $JoinMatch->save();
-            $Balance->balance_amount=$new_balance;
-            $Balance->save();
-            $request->session()->flash('message','You joined the match successfully');
-            return back();
+                $JoinMatch->joined_user_id=$User->user_id;
+                $JoinMatch->match_id=$request->match_id;
+                $JoinMatch->game_user_name=$request->game_user_name;
+                if ($JoinMatch->save()){
+                    $Balance->balance_amount=$new_balance;
+                    $Balance->save();
+                    $request->session()->flash('message','You joined the match successfully');
+                    return back();
+                }
+            }
+
         }
 
     }

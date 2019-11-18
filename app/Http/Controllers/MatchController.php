@@ -41,7 +41,7 @@ class MatchController extends Controller
         $Matchs->version=$request->version;
         $Matchs->map=$request->map;
         $Matchs->match_start=$request->match_start;
-        $Matchs->match_date=$request->match_code;
+        $Matchs->match_code=$request->match_code;
         $Matchs->save();
         $request->session()->flash('message','Data Inserted Successfully');
         return redirect('/p4m.admin.login/add-match');

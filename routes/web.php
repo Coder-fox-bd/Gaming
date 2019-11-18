@@ -17,12 +17,19 @@ Route::post('/login','LoginController@logUserVarify')->name('user.logUserVarify'
 Route::get('/register','RegistrationController@registrationView')->name('user.registrationView');
 Route::post('/register','RegistrationController@storeUser')->name('user.storeUser');
 
-////Forgot password
-//Route::get('/password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.email');
-//Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail');
-//
-//Route::get('/password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.request');
-//Route::post('/password/reset', 'ResetPasswordController@reset')->name('password.request');
+Route::get('password-reminder', [
+    'uses'  => 'AuthController@showPasswordReminder',
+    'as'    => 'password-reminder'
+]);
+
+Route::post('password-reminder', [
+    'uses'  => 'AuthController@postPasswordReminder',
+]);
+
+Route::get('confirm/password/{code}', [
+    'uses'  => 'AuthController@confirmPasswordToken',
+    'as'    => 'confirm-password-token'
+]);
 
 Route::group(['middleware'=>['UserSess']],function (){
     Route::get('/join/{id}','HomeController@homeView')->name('user.homeView');
@@ -46,6 +53,10 @@ Route::group(['middleware'=>['AdminSess']],function (){
     Route::get('/p4m.admin.login/add-match','MatchController@matchView')->name('admin.matchView');
     Route::post('/p4m.admin.login/add-match','MatchController@storeMatch')->name('admin.storeMatch');
     Route::get('/p4m.admin.login/match-players','MatchPlayerSearchController@matchPlayerSearchView')->name('admin.matchPlayerSearchView');
+    Route::post('/p4m.admin.login/match-players','MatchPlayerSearchController@savePassword');
+    Route::get('/p4m.admin.login/match-players/{id}','MatchPlayerSearchController@addKill');
+    Route::post('/p4m.admin.login/match-players/{id}','MatchPlayerSearchController@addKill');
     Route::get('/p4m.admin.login/users','UserSearchController@userSearchView')->name('admin.userSearchView');
     Route::post('/p4m.admin.login/users','UserSearchController@addBalance')->name('admin.addBalance');
+
 });
