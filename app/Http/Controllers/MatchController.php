@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AddGame;
 use App\AddMatch;
 use App\AppAdmin;
+use App\MatchType;
 use Illuminate\Http\Request;
 
 class MatchController extends Controller
@@ -12,9 +13,11 @@ class MatchController extends Controller
     public function matchView(Request $request)
     {
         $Games = AddGame::all();
+        $Match_type = MatchType::all();
         $Admin= AppAdmin::where('admin_id',$request->session()->get('loggedAdmin'))->get();
         return view('Admin.add-match')
             ->with('admins',$Admin)
+            ->with('Match_type',$Match_type)
             ->with('Games',$Games);
     }
     public function storeMatch(Request $request)

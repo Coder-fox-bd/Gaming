@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AddGame;
 use App\AddMatch;
 use App\AppUser;
+use App\MatchType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

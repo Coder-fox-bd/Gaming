@@ -55,10 +55,19 @@
                                             <h6 class="mt-3">{{$data->entry_fee}}</h6>
                                         </div>
                                     </div>
+                                    @php
+                                        if($data->type==1){
+                                            $type = 'Solo';
+                                        }elseif($data->type==2){
+                                            $type = 'Duo';
+                                        }else{
+                                             $type = 'Squad';
+                                        }
+                                    @endphp
                                     <div class="row mt-1">
                                         <div class="col-4 text-center">
                                             <h6 class="red-font">Type</h6>
-                                            <h6 class="mt-3">{{$data->type}}</h6>
+                                            <h6 class="mt-3">{{$type}}</h6>
                                         </div>
                                         <div class="col-4 text-center">
                                             <h6 class="red-font">Version</h6>

@@ -27,39 +27,119 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12">
-                                    <form method="POST" action="/p4m.admin.login/match-players/{id}"  enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group-1">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    <h6>{{$player_resut->game_user_name}}</h6>
+                                    @if($match->type==1)
+                                        <form method="POST" action="/p4m.admin.login/match-players/{id}"  enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group-1">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <h6>{{$player_resut->game_user_name}}</h6>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label class="custom">Winner
+                                                            <input type="checkbox" name="winner" value="1">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <div class="col-4">
-                                                    <label class="custom">Winner
-                                                        <input type="checkbox" name="winner" value="1">
-                                                        <span class="checkmark"></span>
-                                                    </label>
-                                                </div>
+                                                <input type="hidden" name="name" value="{{$player_resut->user_first_name}} {{$player_resut->user_last_name}}">
+                                                <label for="player_one">{{$player_resut->game_user_name_one}} Kills</label>
+                                                <input type="number" name="player_one" id="player_one" placeholder="Kills" required>
+                                                <input type="hidden" name="match_time" value="{{$match->match_start}}">
+                                                <input type="hidden" name="match_id" value="{{$player_resut->match_id}}">
+                                                <input type="hidden" name="joined_user_id" value="{{$player_resut->user_id}}">
+                                                @php
+                                                    $url = \Illuminate\Support\Facades\URL::previous();
+                                                    $timezone = 'ASIA/DHAKA';
+                                                    $date = new DateTime('now', new DateTimeZone($timezone));
+                                                    $localtime = $date->format('d.m.Y');
+                                                @endphp
+                                                <input type="hidden" name="match_date" value="{{$localtime}}">
+                                                <input type="hidden" name="users_joined_in_match_id" value="{{$player_resut->users_joined_in_match_id}}">
+                                                <input type="hidden" name="url" value="{{$url}}">
                                             </div>
-                                            <input type="hidden" name="name" value="{{$player_resut->user_first_name}} {{$player_resut->user_last_name}}">
-                                            <input type="number" name="kill" placeholder="Kills" required>
-                                            <input type="hidden" name="match_time" value="{{$match->match_start}}">
-                                            <input type="hidden" name="match_id" value="{{$player_resut->match_id}}">
-                                            <input type="hidden" name="joined_user_id" value="{{$player_resut->user_id}}">
-                                            @php
-                                                $url = \Illuminate\Support\Facades\URL::previous();
-                                                $timezone = 'ASIA/DHAKA';
-                                                $date = new DateTime('now', new DateTimeZone($timezone));
-                                                $localtime = $date->format('d.m.Y');
-                                            @endphp
-                                            <input type="hidden" name="match_date" value="{{$localtime}}">
-                                            <input type="hidden" name="users_joined_in_match_id" value="{{$player_resut->users_joined_in_match_id}}">
-                                            <input type="hidden" name="url" value="{{$url}}">
-                                        </div>
-                                        <div class="form-submit mt-2">
-                                            <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block" value="Save" />
-                                        </div>
-                                    </form>
+                                            <div class="form-submit mt-2">
+                                                <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block" value="Save" />
+                                            </div>
+                                        </form>
+                                    @elseif($match->type==2)
+                                        <form method="POST" action="/p4m.admin.login/match-players/{id}"  enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group-1">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <h6>{{$player_resut->game_user_name}}</h6>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label class="custom">Winner
+                                                            <input type="checkbox" name="winner" value="1">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="name" value="{{$player_resut->user_first_name}} {{$player_resut->user_last_name}}">
+                                                <label for="player_one">{{$player_resut->game_user_name_one}} Kills</label>
+                                                <input type="number" name="player_one" id="player_one" placeholder="Kills" required>
+                                                <label for="player_two">{{$player_resut->game_user_name_two}} Kills</label>
+                                                <input type="number" name="Player_two" id="player_two" placeholder="Kills" required>
+                                                <input type="hidden" name="match_time" value="{{$match->match_start}}">
+                                                <input type="hidden" name="match_id" value="{{$player_resut->match_id}}">
+                                                <input type="hidden" name="joined_user_id" value="{{$player_resut->user_id}}">
+                                                @php
+                                                    $url = \Illuminate\Support\Facades\URL::previous();
+                                                    $timezone = 'ASIA/DHAKA';
+                                                    $date = new DateTime('now', new DateTimeZone($timezone));
+                                                    $localtime = $date->format('d.m.Y');
+                                                @endphp
+                                                <input type="hidden" name="match_date" value="{{$localtime}}">
+                                                <input type="hidden" name="users_joined_in_match_id" value="{{$player_resut->users_joined_in_match_id}}">
+                                                <input type="hidden" name="url" value="{{$url}}">
+                                            </div>
+                                            <div class="form-submit mt-2">
+                                                <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block" value="Save" />
+                                            </div>
+                                        </form>
+                                    @else
+                                        <form method="POST" action="/p4m.admin.login/match-players/{id}"  enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group-1">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <label class="custom">Winner
+                                                            <input type="checkbox" name="winner" value="1">
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="name" value="{{$player_resut->user_first_name}} {{$player_resut->user_last_name}}">
+                                                <label for="player_one">{{$player_resut->game_user_name_one}} Kills</label>
+                                                <input type="number" name="player_one" id="player_one" placeholder="Kills" required>
+                                                <label for="player_two">{{$player_resut->game_user_name_two}} Kills</label>
+                                                <input type="number" name="Player_two" id="player_two" placeholder="Kills" required>
+                                                <label for="player_three">{{$player_resut->game_user_name_three}} Kills</label>
+                                                <input type="number" name="player_three" id="player_three" placeholder="Kills" required>
+                                                <label for="player_four">{{$player_resut->game_user_name_four}} Kills</label>
+                                                <input type="number" name="player_four" id="player_four" placeholder="Kills" required>
+                                                <input type="hidden" name="match_time" value="{{$match->match_start}}">
+                                                <input type="hidden" name="match_id" value="{{$player_resut->match_id}}">
+                                                <input type="hidden" name="joined_user_id" value="{{$player_resut->user_id}}">
+                                                @php
+                                                    $url = \Illuminate\Support\Facades\URL::previous();
+                                                    $timezone = 'ASIA/DHAKA';
+                                                    $date = new DateTime('now', new DateTimeZone($timezone));
+                                                    $localtime = $date->format('d.m.Y');
+                                                @endphp
+                                                <input type="hidden" name="match_date" value="{{$localtime}}">
+                                                <input type="hidden" name="users_joined_in_match_id" value="{{$player_resut->users_joined_in_match_id}}">
+                                                <input type="hidden" name="url" value="{{$url}}">
+                                            </div>
+                                            <div class="form-submit mt-2">
+                                                <input type="submit" name="submit" id="submit" class="btn btn-primary btn-block" value="Save" />
+                                            </div>
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                         </div>

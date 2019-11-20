@@ -56,8 +56,10 @@
                         <thead class="thead-dark border-0">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Player Name</th>
-                            <th scope="col">Game Username</th>
+                            <th scope="col">Player One</th>
+                            <th scope="col">Player Two</th>
+                            <th scope="col">Player Three</th>
+                            <th scope="col">Player Four</th>
                             <th scope="col">Match Code</th>
                             @if($joined_player)
                                 <th scope="col">
@@ -106,8 +108,10 @@
                                     @endphp
                                     <tr>
                                         <th scope="row">{{$i}}</th>
-                                        <td>{{$player->user_first_name}} {{$player->user_last_name}}</td>
-                                        <td>{{$player->game_user_name}}</td>
+                                        <td>{{$player->game_user_name_one}}</td>
+                                        <td>{{$player->game_user_name_two}}</td>
+                                        <td>{{$player->game_user_name_three}}</td>
+                                        <td>{{$player->game_user_name_four}}</td>
                                         <td>{{$player->match_code}}</td>
                                         <td><a href="{{route('admin.addKillView', [$player->joined_user_id])}}"><i class="fab fa-bitcoin"></i></a></td>
                                     </tr>

@@ -34,13 +34,15 @@ class SubmitJoiningReqController extends Controller
             $Match=AddMatch::where('match_id', $request->match_id)->first();
             $pre_balance = AppUserBalance::where('balance_user_id',$User->user_id)->first();
             $Balance = AppUserBalance::find($pre_balance->balance_id);
-            $new_balance = $pre_balance->balance_amount-$Match->entry_fee;
 
-            $request->validate([
-                'game_user_name'=>'required',
-                'confirm_username'=>'required|same:game_user_name',
-                'match_id'=>'required',
-            ]);
+            if ($Match->type==1){
+                $new_balance = $pre_balance->balance_amount-$Match->entry_fee;
+            }elseif ($Match->type==2){
+                $new_balance = $pre_balance->balance_amount-($Match->entry_fee*2);
+            }else{
+                $new_balance = $pre_balance->balance_amount-($Match->entry_fee*4);
+            }
+
 
             if ($pre_balance->balance_amount<$Match->entry_fee){
                 $request->session()->flash('message2','You have insufficient Balance');
@@ -50,7 +52,10 @@ class SubmitJoiningReqController extends Controller
 
                 $JoinMatch->joined_user_id=$User->user_id;
                 $JoinMatch->match_id=$request->match_id;
-                $JoinMatch->game_user_name=$request->game_user_name;
+                $JoinMatch->game_user_name_one=$request->game_user_name_one;
+                $JoinMatch->game_user_name_two=$request->game_user_name_two;
+                $JoinMatch->game_user_name_three=$request->game_user_name_three;
+                $JoinMatch->game_user_name_four=$request->game_user_name_four;
                 if ($JoinMatch->save()){
                     $Balance->balance_amount=$new_balance;
                     $Balance->save();

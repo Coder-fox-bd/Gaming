@@ -39,7 +39,12 @@
                                             <input type="number" name="win_prize" id="win_prize" placeholder="Win Prize" required />
                                             <input type="number" name="per_kill" id="per_kill" placeholder="Per Kill"/>
                                             <input type="number" name="entry_fee" id="entry_fee" placeholder="Entry Fee" required />
-                                            <input type="text" name="type" id="type" placeholder="Type"/>
+                                            <select name="type" id="type">
+                                                <option value="">Select Type</option>
+                                                @foreach($Match_type as $type)
+                                                    <option value="{{$type->match_type}}">{{$type->type_name}}</option>
+                                                @endforeach
+                                            </select>
                                             <input type="text" name="version" id="version" placeholder="Version"/>
                                             <input type="text" name="map" id="map" placeholder="Map"/>
                                             <input type="text" name="match_start" id="match_start" placeholder="Match Start Time" required />
