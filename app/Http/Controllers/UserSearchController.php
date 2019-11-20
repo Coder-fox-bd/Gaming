@@ -45,7 +45,6 @@ class UserSearchController extends Controller
                     'user_id'=>'required',
                 ]);
 
-                $Balance->balance_user_id=$request->user_id;
                 $Balance->balance_amount=$new_balance;
                 $Balance->save();
                 $request->session()->flash('message', 'Balance added successfully');

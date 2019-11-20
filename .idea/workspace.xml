@@ -130,7 +130,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -192,6 +192,10 @@
       <workItem from="1573962888828" duration="3259000" />
       <workItem from="1573976286802" duration="637000" />
       <workItem from="1574047749674" duration="29337000" />
+      <workItem from="1574137074704" duration="665000" />
+      <workItem from="1574171279240" duration="1131000" />
+      <workItem from="1574172479221" duration="16904000" />
+      <workItem from="1574217263653" duration="3611000" />
     </task>
     <servers />
   </component>

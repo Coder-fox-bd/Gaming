@@ -109,55 +109,13 @@
                                         <td>{{$player->user_first_name}} {{$player->user_last_name}}</td>
                                         <td>{{$player->game_user_name}}</td>
                                         <td>{{$player->match_code}}</td>
-                                        <td><a href="#" data-toggle="modal" data-target="#exampleModalCenter{{$i}}"><i class="fab fa-bitcoin"></i></a></td>
+                                        <td><a href="{{route('admin.addKillView', [$player->joined_user_id])}}"><i class="fab fa-bitcoin"></i></a></td>
                                     </tr>
                                 @else
                                     <div class="text-center">
                                         <h6 class="red-font">No Data Available</h6>
                                     </div>
                                 @endif
-                                <!-- Modal -->
-                                <div class="modal" id="exampleModalCenter{{$i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header text-center bg-dark">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">{{$player->user_first_name}} {{$player->user_last_name}}</h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="/p4m.admin.login/match-players/{id}" method="POST">
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-8">
-                                                            <h6>{{$player->game_user_name}}</h6>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <label class="custom">Winner
-                                                                <input type="checkbox" value="winner">
-                                                                <span class="checkmark"></span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <input type="hidden" name="name" value="{{$player->user_first_name}} {{$player->user_last_name}}" disabled>
-                                                    <input type="number" name="kill" placeholder="Kills" required>
-                                                    <input type="hidden" name="match_time" value="{{$match->match_start}}">
-                                                    <input type="hidden" name="match_id" value="{{$player->match_id}}">
-                                                    <input type="hidden" name="joined_user_id" value="{{$player->joined_user_id}}">
-                                                    @php
-                                                        $date = date("d.m.y");
-                                                    @endphp
-                                                    <input type="hidden" name="match_date" value="{{$date}}" required>
-                                                    <div class="row">
-                                                        <div class="col-12 text-center">
-                                                            <button type="button" class="btn btn-secondary btn-resize" style="font-size: 15px;" data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-primary btn-resize" style="font-size: 15px;">Give</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             @endforeach
                         @else
                             <div class="text-center">
@@ -171,6 +129,5 @@
         </div>
     </div>
 
-
-
 @endsection
+
