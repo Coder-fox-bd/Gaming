@@ -48,6 +48,7 @@
                                             <input type="text" name="version" id="version" placeholder="Version"/>
                                             <input type="text" name="map" id="map" placeholder="Map"/>
                                             <input type="text" name="match_start" id="match_start" placeholder="Match Start Time" required />
+                                            <input type="text" name="date" id="date" placeholder="Match Date" required />
                                             <input type="text" name="match_code" id="match_code" placeholder="Match Code" required />
                                         </div>
                                         <div class="form-submit">

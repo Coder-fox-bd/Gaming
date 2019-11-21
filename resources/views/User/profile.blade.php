@@ -92,17 +92,17 @@
                           <div class="card-body">
                               <div class="row">
                                   <div class="col-3 p-0 text-center">
-                                      <strong>12</strong>
+                                      <strong>{{$kills->total_match}}</strong>
                                       <p class="small-font">Matches Played</p>
                                   </div>
                                   <div class="topbar-divider d-none d-sm-block"></div>
                                   <div class="col-3 p-0 text-center">
-                                      <strong>12</strong>
+                                      <strong>{{$kills->kills}}</strong>
                                       <p class="small-font">Total Kill</p>
                                   </div>
                                   <div class="topbar-divider d-none d-sm-block"></div>
                                   <div class="col-3 p-0 text-center">
-                                      <strong>292</strong>
+                                      <strong>{{$earns->total_earn_amount}}</strong>
                                       <p class="small-font">Amount Won</p>
                                   </div>
                               </div>

@@ -6,6 +6,7 @@ use App\AddGame;
 use App\AddMatch;
 use App\AppAdmin;
 use App\MatchType;
+use App\StoreMatch;
 use Illuminate\Http\Request;
 
 class MatchController extends Controller
@@ -31,6 +32,7 @@ class MatchController extends Controller
             'version'=>'required',
             'map'=>'required',
             'match_start'=>'required',
+            'date'=>'required',
             'match_code'=>'required',
         ]);
 
@@ -44,11 +46,21 @@ class MatchController extends Controller
         $Matchs->version=$request->version;
         $Matchs->map=$request->map;
         $Matchs->match_start=$request->match_start;
+        $Matchs->match_date=$request->date;
         $Matchs->match_code=$request->match_code;
-        $Matchs->save();
-        $request->session()->flash('message','Data Inserted Successfully');
-        return redirect('/p4m.admin.login/add-match');
 
+        if ($Matchs->save()){
+            $id = $Matchs->match_id;
+
+            $store_match = new StoreMatch();
+
+            $store_match->store_match_id=$id;
+            $store_match->match_time=$request->match_start;
+            $store_match->match_date=$request->date;
+            $store_match->save();
+            $request->session()->flash('message','Data Inserted Successfully');
+            return redirect('/p4m.admin.login/add-match');
+        }
 
     }
 }
