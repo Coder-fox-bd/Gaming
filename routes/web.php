@@ -38,6 +38,7 @@ Route::group(['middleware'=>['UserSess']],function (){
     Route::get('/','UserHomeController@userHomeView')->name('user.userHomeView');
     Route::get('/profile','ProfileController@profileView')->name('user.profileView');
     Route::get('/result','ResultController@resultView')->name('user.resultView');
+    Route::get('/result/search','ResultController@searchResult')->name('user.searchResult');
     Route::get('/user/logout','LoginController@userLogout')->name('user.logout');
 });
 

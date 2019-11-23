@@ -57,6 +57,9 @@ class MatchController extends Controller
             $store_match->store_match_id=$id;
             $store_match->match_time=$request->match_start;
             $store_match->match_date=$request->date;
+            $store_match->win_prize=$request->win_prize;
+            $store_match->per_kill=$request->per_kill;
+            $store_match->entry_fee=$request->entry_fee;
             $store_match->save();
             $request->session()->flash('message','Data Inserted Successfully');
             return redirect('/p4m.admin.login/add-match');
