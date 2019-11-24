@@ -26,9 +26,14 @@ Route::post('password-reminder', [
     'uses'  => 'AuthController@postPasswordReminder',
 ]);
 
-Route::get('confirm/password/{code}', [
+Route::get('password-reminder/{id}', [
     'uses'  => 'AuthController@confirmPasswordToken',
     'as'    => 'confirm-password-token'
+]);
+
+Route::post('password-reminder/{id}', [
+    'uses'  => 'AuthController@resetPasswordUpdate',
+    'as'    => 'resetPasswordUpdate'
 ]);
 
 Route::group(['middleware'=>['UserSess']],function (){
@@ -53,19 +58,11 @@ Route::group(['middleware'=>['AdminSess']],function (){
     Route::get('/p4m.admin.login/logout','AdminLoginController@adminLogout')->name('admin.adminLogout');
     Route::get('/p4m.admin.login/add-match','MatchController@matchView')->name('admin.matchView');
     Route::post('/p4m.admin.login/add-match','MatchController@storeMatch')->name('admin.storeMatch');
-
-
-//    Here's the route
-
     Route::get('/p4m.admin.login/match-players','MatchPlayerSearchController@matchPlayerSearchView')->name('admin.matchPlayerSearchView');
     Route::post('/p4m.admin.login/match-players','MatchPlayerSearchController@savePassword');
     Route::get('/p4m.admin.login/match-players/{id}','MatchPlayerSearchController@addKillView')->name('admin.addKillView');
     Route::post('/p4m.admin.login/match-players/{id}','MatchPlayerSearchController@addKillSave')->name('admin.addKillSave');
-
-
-
-
     Route::get('/p4m.admin.login/users','UserSearchController@userSearchView')->name('admin.userSearchView');
     Route::post('/p4m.admin.login/users','UserSearchController@addBalance')->name('admin.addBalance');
-
 });
+

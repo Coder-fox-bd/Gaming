@@ -66,11 +66,61 @@ class ResultController extends Controller
                 foreach ($results as $result){
                     $i++;
                     if ($result->winner==1){
-                        $output .= '<tr>' .
-                            '<th scope="row">'.$i.'</th>' .
-                            '<td>'.$result->player_one_username.'</td>' .
-                            '<td>'.$result->player_one_kill.'</td>' .
-                            '</tr>';
+                        if ($result->player_one_username && $result->player_two_username && $result->player_three_username && $result->player_four_username){
+                            $output .= '<tr>' .
+                                '<th scope="row">'.$i.'</th>' .
+                                '<td>'.$result->player_one_username.'</td>' .
+                                '<td>'.$result->player_one_kill.'</td>' .
+                                '</tr>';
+                            $output .= '<tr>' .
+                                '<th scope="row"></th>' .
+                                '<td>'.$result->player_two_username.'</td>' .
+                                '<td>'.$result->player_two_kill.'</td>' .
+                                '</tr>';
+                            $output .= '<tr>' .
+                                '<th scope="row"></th>' .
+                                '<td>'.$result->player_three_username.'</td>' .
+                                '<td>'.$result->player_three_kill.'</td>' .
+                                '</tr>';
+                            $output .= '<tr>' .
+                                '<th scope="row"></th>' .
+                                '<td>'.$result->player_four_username.'</td>' .
+                                '<td>'.$result->player_four_kill.'</td>' .
+                                '</tr>';
+                        }elseif ($result->player_one_username && $result->player_two_username && $result->player_three_username){
+                            $output .= '<tr>' .
+                                '<th scope="row">'.$i.'</th>' .
+                                '<td>'.$result->player_one_username.'</td>' .
+                                '<td>'.$result->player_one_kill.'</td>' .
+                                '</tr>';
+                            $output .= '<tr>' .
+                                '<th scope="row"></th>' .
+                                '<td>'.$result->player_two_username.'</td>' .
+                                '<td>'.$result->player_two_kill.'</td>' .
+                                '</tr>';
+                            $output .= '<tr>' .
+                                '<th scope="row"></th>' .
+                                '<td>'.$result->player_three_username.'</td>' .
+                                '<td>'.$result->player_three_kill.'</td>' .
+                                '</tr>';
+                        }elseif ($result->player_one_username && $result->player_two_username){
+                            $output .= '<tr>' .
+                                '<th scope="row">'.$i.'</th>' .
+                                '<td>'.$result->player_one_username.'</td>' .
+                                '<td>'.$result->player_one_kill.'</td>' .
+                                '</tr>';
+                            $output .= '<tr>' .
+                                '<th scope="row"></th>' .
+                                '<td>'.$result->player_two_username.'</td>' .
+                                '<td>'.$result->player_two_kill.'</td>' .
+                                '</tr>';
+                        }else{
+                            $output .= '<tr>' .
+                                '<th scope="row">'.$i.'</th>' .
+                                '<td>'.$result->player_one_username.'</td>' .
+                                '<td>'.$result->player_one_kill.'</td>' .
+                                '</tr>';
+                        }
                     }
                 }
                 $output .= '</tbody>' .
