@@ -24,6 +24,22 @@
     <title>@yield('title')</title>
 </head>
 <body class="d-flex flex-column">
+<style>
+    .dropdown-menu{
+        min-width: 300px;
+    }
+    .cut-text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 230px;
+        height: 1.2em;
+        white-space: nowrap;
+    }
+    hr{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>
 <nav class="navbar navbar-expand-md bg-white navbar-white">
     <!-- Brand -->
     <a class="navbar-brand" href="{{route('user.userHomeView')}}">PlayForMoney</a>
@@ -45,8 +61,39 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('user.resultView')}}">Result</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Notification</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bell"></i>(<strong>2</strong>)</a>
+                <div class="dropdown-menu">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a href="" class="text-center">Mark all as Read</a>
+                            <hr>
+                        </div>
+                    </div>
+                    <a class="dropdown-item" href="#">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" style="height: 30px; width: 30px;" alt=""></div></div>
+                            <div class="col-md-9 col-sm-9 col-xs-9">
+                                <p class="cut-text mt-1">Notification text will be here. Notification text will be here</p>
+                            </div>
+                        </div>
+                    </a>
+                    <hr>
+                    <a class="dropdown-item" href="#" style="background-color: antiquewhite">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-3"><div class="notify-img"><img src="http://placehold.it/45x45" style="height: 30px; width: 30px;" alt=""></div></div>
+                            <div class="col-md-9 col-sm-9 col-xs-9">
+                                <p class="cut-text mt-1">Notification text will be here. Notification text will be here</p>
+                            </div>
+                        </div>
+                    </a>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <a href=""><i class="fa fa-eye"></i> See All</a>
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>
