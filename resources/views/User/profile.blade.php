@@ -112,8 +112,8 @@
               </div>
               <div class="row mt-5 bg-white">
                   <div class="col-4 text-center">
-                      <a href="#" class="rounded-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-wallet"></i></a>
-                      <p>Withdrow</p>
+                      <a href="{{route('user.transactionView')}}" class="rounded-btn"><i class="fa fa-wallet"></i></a>
+                      <p>My Wallet</p>
                   </div>
                   <div class="col-4 text-center">
                       <a href="#" class="rounded-btn">
@@ -139,29 +139,4 @@
           </div>
       </div>
   </div>
-
-    <!-- Modal -->
-    <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-center bg-dark">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Enter Amount</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="#" method="POST">
-                        @csrf
-                        <input type="text" name="amount" placeholder="Amount">
-                        <input type="password" name="password" placeholder="Confirm your Password">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <button type="button" class="btn btn-secondary btn-resize" style="font-size: 15px;" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary btn-resize" style="font-size: 15px;">Withdraw</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection

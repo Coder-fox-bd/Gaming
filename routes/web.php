@@ -44,6 +44,7 @@ Route::group(['middleware'=>['UserSess']],function (){
     Route::get('/profile','ProfileController@profileView')->name('user.profileView');
     Route::get('/result','ResultController@resultView')->name('user.resultView');
     Route::get('/result/search','ResultController@searchResult')->name('user.searchResult');
+    Route::get('/transaction','TransactionController@transactionView')->name('user.transactionView');
     Route::get('/user/logout','LoginController@userLogout')->name('user.logout');
 });
 
