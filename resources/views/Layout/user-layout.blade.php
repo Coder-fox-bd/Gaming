@@ -15,8 +15,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('css')
     <!-- JS -->
-    <script src="{{asset('vendor')}}/jquery/jquery-3.2.1.min.js"></script>
-    <script src="{{asset('vendor')}}/jquery/jquery.slim.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!--===============================================================================================-->
     <script src="{{asset('vendor')}}/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->

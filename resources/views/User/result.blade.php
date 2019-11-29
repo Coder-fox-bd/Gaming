@@ -60,8 +60,25 @@
                                 url : '{{ route('user.searchResult') }}',
                                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                                 data:{'search':$value},
+                                beforeSend : function() {
+                                    var spinner_html = '';
+                                    spinner_html += '<div class="card">';
+                                    spinner_html += '<div class="card-header">';
+                                    spinner_html += '<label>Student List</label>';
+                                    spinner_html += '</div>';
+
+                                    spinner_html += '<div class="card-body text-center">';
+
+                                    spinner_html += '<div class="spinner-border text-info" role="status">';
+                                    spinner_html += '<span class="sr-only">Loading...</span>';
+                                    spinner_html += '</div>';
+                                    spinner_html += '</div>';
+                                    spinner_html += '</div>';
+                                    spinner_html += '<div>';
+
+                                    $("#student_search_result").html(spinner_html);
+                                },
                                 success:function(data){
-                                    console.log(data);
                                     $('#result{{$i}}').html(data);
                                 }
                             });

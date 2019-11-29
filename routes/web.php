@@ -45,6 +45,7 @@ Route::group(['middleware'=>['UserSess']],function (){
     Route::get('/result','ResultController@resultView')->name('user.resultView');
     Route::get('/result/search','ResultController@searchResult')->name('user.searchResult');
     Route::get('/transaction','TransactionController@transactionView')->name('user.transactionView');
+    Route::post('/transaction','TransactionController@withDraw')->name('user.withDraw');
     Route::get('/transaction/bKash','TransactionController@addMoneyView')->name('user.addMoneyView');
     Route::post('/transaction/bKash','TransactionController@addMoney')->name('user.addMoney');
     Route::get('/transaction/rocket','TransactionController@addRocketMoneyView')->name('user.addRocketMoneyView');

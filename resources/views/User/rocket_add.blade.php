@@ -26,7 +26,6 @@
                         <span style="margin-left: 3px; font-size: 14px">0190000000000 (Play for Money Rocket Number)</span>
                     </div>
                 </div>
-
                 <div class="row mt-5">
                     <div class="col-12 text-center">
                         <p style="color: red; font-size: 14px;">*First send money to Play for Money Rocket personal number and verify your payment by entering your mobile number and amount you send.</p>

@@ -123,6 +123,8 @@
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
     </include_path>
   </component>
   <component name="ProjectId" id="1SClhpRjj6zua6tY3PRuG0vcMZH" />
@@ -201,7 +203,8 @@
       <workItem from="1574578448670" duration="24842000" />
       <workItem from="1574665690699" duration="18283000" />
       <workItem from="1574747119599" duration="11008000" />
-      <workItem from="1574836029741" duration="29091000" />
+      <workItem from="1574836029741" duration="29903000" />
+      <workItem from="1575008223877" duration="27256000" />
     </task>
     <servers />
   </component>

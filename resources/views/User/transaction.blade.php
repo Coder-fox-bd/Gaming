@@ -89,8 +89,8 @@
                             </div>
                         </div>
                         <div class="row" style="margin-top: 18%">
-                            <div class="col-12 text-center">
-                                <i class="fas fa-coins fa-3x gold"><span style="color: white">300</span></i>
+                            <div class="col-12 text-center" >
+                                <i class="fas fa-coins fa-3x gold" id="balance"><span style="color: white">{{$balance->balance_amount}}</span></i>
                             </div>
                         </div>
                     </div>
@@ -115,51 +115,7 @@
                                                     <div class="container">
                                                         <div class="row" style="margin-top: 10%;">
                                                             <div class="col-12 text-center">
-                                                                <a class="instraction" onclick="hideShow()" style="color: white;">How to add money?</a>
-                                                            </div>
-                                                        </div>
-                                                        <div id="hidden-div" style="display:none; margin-top: 12px;">
-                                                            <div class="row mt-3">
-                                                                <div class="col-12 p-0">
-                                                                    <img src="{{asset('images')}}/icons/bikash.png" alt="" style="max-height: 40px; max-width: 40px;">
-                                                                    <span style="margin-left: 3px; font-size: 16px; font-weight: bold;">01900000000 (Play for Money bKash)</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-3">
-                                                                <div class="col-12 p-0">
-                                                                    <img src="{{asset('images')}}/icons/ROCKET.png" alt="" style="max-height: 40px; max-width: 40px;">
-                                                                    <span style="margin-left: 3px; font-size: 16px; font-weight: bold;">0190000000000 (Play for Money Rocket)</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-3">
-                                                                <div class="col-12 p-0">
-                                                                    <p style="font-weight: bold; font-size: 18px">Follow below steps <i class="fas fa-hand-point-down" style="color: #ffb61e"></i></p>
-                                                                    <p style="font-size: 17px; font-weight: bold; margin: 0px;">Step 1:</p>
-                                                                    <p style="margin: 0px;">1. Dial *247# or *322#</p>
-                                                                    <p style="margin: 0px;">2. Select <strong>Send Money</strong> Option.</p>
-                                                                    <p style="margin: 0px;">3. Enter <strong>Play for Money</strong> Personal Account Number.</p>
-                                                                    <p style="margin: 0px;">4. Enter Your Amount</p>
-                                                                    <p style="margin: 0px;">5. Enter Reference Number 1</p>
-                                                                    <p style="margin: 0px;">6. Now Enter your PIN</p>
-                                                                    <p>7. Almost Done. Now follow step 2.</p>
-                                                                    <p style="font-size: 17px; font-weight: bold; margin: 0px;">Step 2:</p>
-                                                                    <p style="margin: 0px;">1. Go to <span style="color: darkred"><strong>www.playformoney.net</strong></span></p>
-                                                                    <p style="margin: 0px;">2. Login to your account.</p>
-                                                                    <p style="margin: 0px;">3. Go to <span style="color: darkred"><strong>My Wallet</strong></span> and select your mobile banking service(bKash or Rocket).</p>
-                                                                    <p style="margin: 0px;">4. Verify your <span style="font-weight: bold; color: darkred">Payment</span> <span style="color: darkred">by entering amount adn your bKash or Rocket Number.</span></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-3">
-                                                                <div class="col-12 text-center p-0">
-                                                                    <p style="font-weight: bold; font-size: 15px;">Once Play For Money verify your payment details, Within 2 hours your money will be added.</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-3">
-                                                                <div class="col-12 text-center p-0">
-                                                                    <p style="font-weight: bold; font-size: 15px; margin: 0px;">Chick the link for your Guide</p>
-                                                                    <a href="#" class="rounded-button" style="font-size: 24px; font-weight: bold;"><i class="fab fa-youtube" style="color: red"></i><span style="color: black;">YouTube</span></a>
-
-                                                                </div>
+                                                                <a type="button" class="instraction" data-toggle="modal" data-target="#exampleModalLong" style="color: white;">How to add money?</a>
                                                             </div>
                                                         </div>
                                                         <div class="row" style="margin-top: 20%;">
@@ -188,8 +144,51 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                                                </div>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="text-center">
+                                                                    <h5 style="font-weight: bold;">Withdrow to <span style="color: #ff4648">bKash</span> or <span style="color: purple">Rocket</span> Account</h5>
+                                                                </div>
+                                                                <div class="container">
+                                                                    <div class="row mt-10">
+                                                                        <div class="col-12 text-center">
+                                                                            @if(session('message'))
+                                                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                                                    <strong>Congrats !</strong> {{session('message')}}
+                                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                            @endif
+                                                                            @if(session('message2'))
+                                                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                                                    {{session('message2')}}
+                                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                            @endif
+                                                                            <form action="/transaction" method="post">
+                                                                                @csrf
+                                                                                <select name="withdow_method" required>
+                                                                                    <option value="">--Select Payment Method--</option>
+                                                                                    <option value="bkash">bKash</option>
+                                                                                    <option value="rocket">Rocket</option>
+                                                                                </select>
+                                                                                <input type="number" name="mobile_number" placeholder="Mobile Number" required>
+                                                                                <input type="number" name="amount_withdraw" placeholder="Amount to Withdraw" min="100" required>
+                                                                                <p>Minimum withdraw amount is BDT 100</p>
+                                                                                <button type="submit" class="btn btn-primary btn-block">Withdraw</button>
+
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                                     Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
                                                 </div>
@@ -211,15 +210,92 @@
         </div>
     </div>
 
-    <script>
-        function hideShow() {
-            var x = document.getElementById("hidden-div");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
 
+
+
+    <!-- Modal -->
+    <div class="modal" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row mt-3">
+                            <div class="col-12 p-0">
+                                <img src="{{asset('images')}}/icons/bikash.png" alt="" style="max-height: 40px; max-width: 40px;">
+                                <span style="margin-left: 3px; font-size: 16px; font-weight: bold;">01900000000 (Play for Money bKash)</span>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 p-0">
+                                <img src="{{asset('images')}}/icons/ROCKET.png" alt="" style="max-height: 40px; max-width: 40px;">
+                                <span style="margin-left: 3px; font-size: 16px; font-weight: bold;">0190000000000 (Play for Money Rocket)</span>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 p-0">
+                                <p style="font-weight: bold; font-size: 18px">Follow below steps <i class="fas fa-hand-point-down" style="color: #ffb61e"></i></p>
+                                <p style="font-size: 17px; font-weight: bold; margin: 0px;">Step 1:</p>
+                                <p style="margin: 0px;">1. Dial *247# or *322#</p>
+                                <p style="margin: 0px;">2. Select <strong>Send Money</strong> Option.</p>
+                                <p style="margin: 0px;">3. Enter <strong>Play for Money</strong> Personal Account Number.</p>
+                                <p style="margin: 0px;">4. Enter Your Amount</p>
+                                <p style="margin: 0px;">5. Enter Reference Number 1</p>
+                                <p style="margin: 0px;">6. Now Enter your PIN</p>
+                                <p>7. Almost Done. Now follow step 2.</p>
+                                <p style="font-size: 17px; font-weight: bold; margin: 0px;">Step 2:</p>
+                                <p style="margin: 0px;">1. Go to <span style="color: darkred"><strong>www.playformoney.net</strong></span></p>
+                                <p style="margin: 0px;">2. Login to your account.</p>
+                                <p style="margin: 0px;">3. Go to <span style="color: darkred"><strong>My Wallet</strong></span> and select your mobile banking service(bKash or Rocket).</p>
+                                <p style="margin: 0px;">4. Verify your <span style="font-weight: bold; color: darkred">Payment</span> <span style="color: darkred">by entering amount adn your bKash or Rocket Number.</span></p>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center p-0">
+                                <p style="font-weight: bold; font-size: 15px;">Once Play For Money verify your payment details, Within 2 hours your money will be added.</p>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center p-0">
+                                <p style="font-weight: bold; font-size: 15px; margin: 0px;">Chick the link for your Guide</p>
+                                <a href="#" class="rounded-button" style="font-size: 24px; font-weight: bold;"><i class="fab fa-youtube" style="color: red"></i><span style="color: black;">YouTube</span></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function() {
+            $('a[data-toggle="tab"]').on('click', function(e) {
+                window.localStorage.setItem('activeTab', $(e.target).attr('href'));
+            });
+            var activeTab = window.localStorage.getItem('activeTab');
+            if (activeTab) {
+                $('#nav-tab a[href="' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
+    </script>
 @endsection
