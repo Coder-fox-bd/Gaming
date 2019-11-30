@@ -48,6 +48,7 @@ Route::group(['middleware'=>['UserSess']],function (){
     Route::post('/transaction','TransactionController@withDraw')->name('user.withDraw');
     Route::get('/transaction/bKash','TransactionController@addMoneyView')->name('user.addMoneyView');
     Route::post('/transaction/bKash','TransactionController@addMoney')->name('user.addMoney');
+    Route::get('/wait/{id}','PlayerWaitController@waitView')->name('user.waitView');
     Route::get('/transaction/rocket','TransactionController@addRocketMoneyView')->name('user.addRocketMoneyView');
     Route::post('/transaction/rocket','TransactionController@addRocketMoney')->name('user.addRocketMoney');
     Route::get('/user/logout','LoginController@userLogout')->name('user.logout');
@@ -70,5 +71,8 @@ Route::group(['middleware'=>['AdminSess']],function (){
     Route::post('/p4m.admin.login/match-players/{id}','MatchPlayerSearchController@addKillSave')->name('admin.addKillSave');
     Route::get('/p4m.admin.login/users','UserSearchController@userSearchView')->name('admin.userSearchView');
     Route::post('/p4m.admin.login/users','UserSearchController@addBalance')->name('admin.addBalance');
+    Route::get('/p4m.admin.login/match-list','MatchController@matchList')->name('admin.matchList');
+    Route::get('/p4m.admin.login/match-list/{id}','MatchController@deleteMatch')->name('admin.deleteMatch');
+    Route::get('/p4m.admin.login/notification','AdminNotificationController@notificationView')->name('admin.notificationView');
 });
 

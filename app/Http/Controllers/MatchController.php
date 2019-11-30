@@ -66,4 +66,19 @@ class MatchController extends Controller
         }
 
     }
+
+    public function matchList(Request $request){
+        $Admin= AppAdmin::where('admin_id',$request->session()->get('loggedAdmin'))->get();
+        $match_list = AddMatch::get();
+        return view('Admin.match-list')
+            ->with('admin',$Admin)
+            ->with('matchs',$match_list);
+
+    }
+
+    public function deleteMatch(Request $request,$id){
+        AddMatch::where('match_id',$id)->delete();
+        $request->session()->flash('message','Match has been deleted successfully!');
+        return back();
+    }
 }

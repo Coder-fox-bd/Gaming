@@ -7,6 +7,9 @@
 @endsection
 @section('container')
     <style>
+        body{
+            background: white;
+        }
         .bg-yellow{
             background-color: #f5c72f;
         }
@@ -15,6 +18,19 @@
         }
         .white-text{
             color: white;
+        }
+        .loader {
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid #555; /* black */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
     <div class="play-wraper mt-5">
@@ -48,41 +64,33 @@
                             </button>
                         </div>
                     </div>
+{{--                    <div class="row" id="loader{{$i}}" style="display: none">--}}
+{{--                        <div class="col-5">--}}
+
+{{--                        </div>--}}
+{{--                        <div class="col-7">--}}
+{{--                            <div class="loader"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div id="result{{$i}}">
 
                     </div>
                     <script type="text/javascript">
-                        $('#search{{$i}}').click(function(){
-                            $value=$('#value{{$i}}').val();
-                            $("#result{{$i}}").toggle('show');
-                            $.ajax({
-                                type : 'get',
-                                url : '{{ route('user.searchResult') }}',
-                                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                                data:{'search':$value},
-                                beforeSend : function() {
-                                    var spinner_html = '';
-                                    spinner_html += '<div class="card">';
-                                    spinner_html += '<div class="card-header">';
-                                    spinner_html += '<label>Student List</label>';
-                                    spinner_html += '</div>';
-
-                                    spinner_html += '<div class="card-body text-center">';
-
-                                    spinner_html += '<div class="spinner-border text-info" role="status">';
-                                    spinner_html += '<span class="sr-only">Loading...</span>';
-                                    spinner_html += '</div>';
-                                    spinner_html += '</div>';
-                                    spinner_html += '</div>';
-                                    spinner_html += '<div>';
-
-                                    $("#student_search_result").html(spinner_html);
-                                },
-                                success:function(data){
-                                    $('#result{{$i}}').html(data);
-                                }
+                        $(document).ready(function() {
+                            $('#search{{$i}}').click(function(){
+                                $value=$('#value{{$i}}').val();
+                                $("#result{{$i}}").toggle('show');
+                                $.ajax({
+                                    type : 'get',
+                                    url : '{{ route('user.searchResult') }}',
+                                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                                    data:{'search':$value},
+                                    success:function(data){
+                                        $('#result{{$i}}').html(data);
+                                    },
+                                });
                             });
-                        })
+                        });
                     </script>
                 @endforeach
             </div>

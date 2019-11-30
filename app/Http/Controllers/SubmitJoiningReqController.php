@@ -24,11 +24,18 @@ class SubmitJoiningReqController extends Controller
     public function saveJoinReq(Request $request,$id)
     {
         $User= AppUser::where('user_id',$request->session()->get('loggedUser'))->first();
-
+        $match_type = AddMatch::where('match_id',$request->match_id)->first();
         $CountUser = AppMatchJoinedPlayer::where('match_id', $request->match_id)->count();
+        if ($match_type->type==1){
+            $full = 100;
+        }elseif($match_type->type==2){
+            $full = 50;
+        }else{
+            $full = 25;
+        }
 
-        if ($CountUser==100){
-            $request->session()->flash('message2','The Room is full ! Please Join next match');
+        if ($CountUser==$full){
+            $request->session()->flash('message2','The Room is full ! Please Join another match');
             return back();
         }else{
             $Match=AddMatch::where('match_id', $request->match_id)->first();
@@ -37,15 +44,18 @@ class SubmitJoiningReqController extends Controller
 
             if ($Match->type==1){
                 $new_balance = $pre_balance->balance_amount-$Match->entry_fee;
+                $entry_fee = $Match->entry_fee;
             }elseif ($Match->type==2){
                 $new_balance = $pre_balance->balance_amount-($Match->entry_fee*2);
+                $entry_fee = $Match->entry_fee*2;
             }else{
                 $new_balance = $pre_balance->balance_amount-($Match->entry_fee*4);
+                $entry_fee = $Match->entry_fee*4;
             }
 
 
-            if ($pre_balance->balance_amount<$Match->entry_fee){
-                $request->session()->flash('message2','You have insufficient Balance');
+            if ($pre_balance->balance_amount<$entry_fee){
+                $request->session()->flash('message3','You have insufficient Balance.');
                 return back();
             }else{
                 $JoinMatch = new AppMatchJoinedPlayer();
@@ -59,8 +69,9 @@ class SubmitJoiningReqController extends Controller
                 if ($JoinMatch->save()){
                     $Balance->balance_amount=$new_balance;
                     $Balance->save();
+                    $match_id =$request->match_id;
                     $request->session()->flash('message','You joined the match successfully');
-                    return back();
+                    return redirect()->to('/wait/'.$match_id);
                 }
             }
 

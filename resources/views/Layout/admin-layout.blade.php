@@ -46,6 +46,9 @@
                 <a href="{{route('admin.matchView')}}" class="nav-link">Add Match</a>
             </li>
             <li class="nav-item">
+                <a href="{{route('admin.matchList')}}" class="nav-link">Match List</a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('admin.matchPlayerSearchView')}}" class="nav-link">Player Joined</a>
             </li>
             <li class="nav-item">

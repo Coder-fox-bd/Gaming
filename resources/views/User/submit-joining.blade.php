@@ -9,6 +9,14 @@
         <div class="play-wraper">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    @if(session('message3'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Oops !</strong> {{session('message3')}}. <strong><a href="{{route('user.transactionView')}}">Click here to add money to your account.</a></strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     @if(session('message2'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Oops !</strong> {{session('message2')}}.
