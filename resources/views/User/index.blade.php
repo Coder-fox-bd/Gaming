@@ -8,9 +8,6 @@
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor')}}/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{asset('fonts')}}/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('fonts')}}/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('vendor')}}/animate/animate.css">
@@ -30,7 +27,7 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login" style="background-color: #49d8ef;">
+		<div class="container-login" style="background-color: white;">
 			<div class="wrap-login p-l-55 p-r-55 p-t-65 p-b-54">
 				<form class="login-form validate-form" method="POST" action="/login">
                     @csrf
@@ -84,7 +81,6 @@
 <!--===============================================================================================-->
 	<script src="{{asset('vendor')}}/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="{{asset('vendor')}}/bootstrap/js/popper.js"></script>
 	<script src="{{asset('vendor')}}/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('vendor')}}/select2/select2.min.js"></script>

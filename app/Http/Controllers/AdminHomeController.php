@@ -40,4 +40,20 @@ class AdminHomeController extends Controller
         $request->session()->flash('message','Data Inserted Successfully');
         return redirect('/p4m.admin.login/home');
     }
+
+    public function gameList(Request $request){
+        $game = AddGame::get();
+        $Admin= AppAdmin::where('admin_id',$request->session()->get('loggedAdmin'))->get();
+        return view('Admin.game-list')
+            ->with('admin',$Admin)
+            ->with('games',$game);
+
+
+    }
+
+    public function deleteGame(Request $request,$id){
+        AddGame::where('game_id',$id)->delete();
+        $request->session()->flash('message','Game has been deleted successfully!');
+        return back();
+    }
 }

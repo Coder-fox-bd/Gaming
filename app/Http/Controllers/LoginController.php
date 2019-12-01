@@ -24,7 +24,7 @@ class LoginController extends Controller
         $User= AppUser::where('user_username',$request->user_username)->first();
         if ($User && Hash::check($request->password,$User->user_password)){
             $request->session()->put('loggedUser',$User->user_id);
-            return redirect('/');
+            return redirect('/play');
         }else{
             $request->session()->flash('message','Sorry Wrong Username or Password');
             return back();

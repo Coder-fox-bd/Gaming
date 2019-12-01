@@ -24,6 +24,12 @@
 </head>
 <body class="d-flex flex-column">
 <style>
+    .nav-bg{
+        background-color: #00475e;
+    }
+    .navbar{
+        border-bottom: 5px solid #ffc600;
+    }
     .cut-text {
         text-overflow: ellipsis;
         overflow: hidden;
@@ -223,82 +229,107 @@
         color: #858796;
         white-space: nowrap;
     }
+    @media (max-width: 992px) {
+        .navbar-collapse {
+            position: absolute;
+            top: 79px;
+            right: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .navbar-collapse.collapsing {
+            height: auto !important;
+            margin-right: 50%;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        .navbar-collapse.show {
+            right: 0;
+        }
+    }
 </style>
-<nav class="navbar navbar-expand-md bg-white navbar-white">
-    <!-- Brand -->
-    <a class="navbar-brand" href="{{route('user.userHomeView')}}">PlayForMoney</a>
 
 
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top nav-bg">
+    <a class="navbar-brand" href="{{route('user.userHomeView')}}"><img src="{{asset('images/icons')}}/P$M.png" alt="PlayForMoney" style="max-width: 100px; max-height: 100px;"></a>
+    <div class="collapse navbar-collapse nav-bg" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a href="{{route('user.userHomeView')}}" class="nav-link">Home</a>
+                <a href="{{route('user.userHomeView')}}" class="nav-link" style="color: white; font-weight: bold; font-size: 30px;">Game</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('user.profileView')}}">Profile</a>
+                <a class="nav-link" href="{{route('user.profileView')}}" style="color: white; font-weight: bold; font-size: 30px;">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('user.resultView')}}">Result</a>
+                <a class="nav-link" href="{{route('user.resultView')}}" style="color: white; font-weight: bold; font-size: 30px;">Result</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('user.transactionView')}}" style="color: white; font-weight: bold; font-size: 30px;">Wallet</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('user.logout')}}" style="color: white; font-weight: bold; font-size: 30px;">Logout</a>
             </li>
         </ul>
     </div>
 
-        <!-- Nav Item - Alerts -->
-        <div class="nav-item ml-auto dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+    <!-- Nav Item - Alerts -->
+    <div class="nav-item ml-auto dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-fw"></i>
+            <!-- Counter - Alerts -->
+            <span class="badge badge-danger badge-counter">3+</span>
+        </a>
+        <!-- Dropdown - Alerts -->
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+            <h6 class="dropdown-header">
+                Alerts Center
+            </h6>
+            <hr>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                </div>
             </a>
-            <!-- Dropdown - Alerts -->
-            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                    Alerts Center
-                </h6>
-                <hr>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class="fas fa-file-alt text-white"></i>
-                        </div>
+            <hr>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                        <i class="fas fa-donate text-white"></i>
                     </div>
-                    <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                </div>
+            </a>
+            <hr>
+            <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
                     </div>
-                </a>
-                <hr>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-success">
-                            <i class="fas fa-donate text-white"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 7, 2019</div>
-                        $290.29 has been deposited into your account!
-                    </div>
-                </a>
-                <hr>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-warning">
-                            <i class="fas fa-exclamation-triangle text-white"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 2, 2019</div>
-                        Spending Alert: We've noticed unusually high spending for your account.
-                    </div>
-                </a>
-                <hr>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-            </div>
+                </div>
+                <div>
+                    <div class="small text-gray-500">December 2, 2019</div>
+                    Spending Alert: We've noticed unusually high spending for your account.
+                </div>
+            </a>
+            <hr>
+            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
         </div>
+    </div>
 
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>

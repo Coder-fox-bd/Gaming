@@ -205,7 +205,8 @@
       <workItem from="1574747119599" duration="11008000" />
       <workItem from="1574836029741" duration="29903000" />
       <workItem from="1575008223877" duration="27256000" />
-      <workItem from="1575106787896" duration="27319000" />
+      <workItem from="1575106787896" duration="27469000" />
+      <workItem from="1575173030697" duration="13827000" />
     </task>
     <servers />
   </component>
@@ -224,5 +225,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/Admin/game-list.blade.php</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -37,7 +37,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="{{route('admin.home')}}" class="nav-link">Home</a>
+                <a href="{{route('admin.home')}}" class="nav-link">Add Game</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin.deleteGame')}}" class="nav-link">Game List</a>
             </li>
             <li class="nav-item">
                 <a href="{{route('admin.viewAddAdmin')}}" class="nav-link">Add Admin</a>

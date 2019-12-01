@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
 @endsection
 @section('title')
-    Match List
+    Game List
 @endsection
 @section('container')
     <style>
@@ -30,11 +30,8 @@
                         <thead class="thead-dark border-0">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Match Version</th>
-                            <th scope="col">Match Map</th>
-                            <th scope="col">Match Time</th>
-                            <th scope="col">Match Date</th>
-                            <th scope="col">Match Code</th>
+                            <th scope="col">Game Name</th>
+                            <th scope="col">Game Name</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -42,18 +39,15 @@
                         @php
                             $i=0;
                         @endphp
-                        @if($matchs)
-                            @foreach($matchs as $match)
+                        @if($games)
+                            @foreach($games as $game)
                                 @php
                                     $i++;
                                 @endphp
                                 <tr>
                                     <th scope="row">{{$i}}</th>
-                                    <td>{{$match->version}}</td>
-                                    <td>{{$match->map}}</td>
-                                    <td>{{$match->match_start}}</td>
-                                    <td>{{$match->match_date}}</td>
-                                    <td>{{$match->match_code}}</td>
+                                    <td>{{$game->game_name}}</td>
+                                    <td>{{$game->game_types}}</td>
                                     <td><a data-toggle="modal" data-target="#exampleModalCenter{{$i}}" style="color: red"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
 
@@ -71,7 +65,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                <a href="{{route('admin.deleteMatch', [$match->match_id])}}" class="btn btn-primary">Yeah</a>
+                                                <a href="{{route('admin.deleteGame', [$game->game_id])}}" class="btn btn-primary">Yeah</a>
                                             </div>
                                         </div>
                                     </div>
@@ -88,6 +82,7 @@
             </div>
         </div>
     </div>
+
 
 @endsection
 

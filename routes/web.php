@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('/','GuestHomeController@guestView')->name('guest.home');
 Route::get('/login','LoginController@loginView')->name('user.login');
 Route::post('/login','LoginController@logUserVarify')->name('user.logUserVarify');
 Route::get('/register','RegistrationController@registrationView')->name('user.registrationView');
@@ -40,7 +40,7 @@ Route::group(['middleware'=>['UserSess']],function (){
     Route::get('/join/{id}','HomeController@homeView')->name('user.homeView');
     Route::get('/join/match/{id}','SubmitJoiningReqController@joinView')->name('user.joinView');
     Route::post('/join/match/{id}','SubmitJoiningReqController@saveJoinReq')->name('user.saveJoinReq');
-    Route::get('/','UserHomeController@userHomeView')->name('user.userHomeView');
+    Route::get('/play','UserHomeController@userHomeView')->name('user.userHomeView');
     Route::get('/profile','ProfileController@profileView')->name('user.profileView');
     Route::get('/result','ResultController@resultView')->name('user.resultView');
     Route::get('/result/search','ResultController@searchResult')->name('user.searchResult');
@@ -74,5 +74,7 @@ Route::group(['middleware'=>['AdminSess']],function (){
     Route::get('/p4m.admin.login/match-list','MatchController@matchList')->name('admin.matchList');
     Route::get('/p4m.admin.login/match-list/{id}','MatchController@deleteMatch')->name('admin.deleteMatch');
     Route::get('/p4m.admin.login/notification','AdminNotificationController@notificationView')->name('admin.notificationView');
+    Route::get('/p4m.admin.login/game-list','AdminHomeController@gameList')->name('admin.gameList');
+    Route::get('/p4m.admin.login/game-list/{id}','AdminHomeController@deleteGame')->name('admin.deleteGame');
 });
 
