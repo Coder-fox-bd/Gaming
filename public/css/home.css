@@ -1,0 +1,43 @@
+
+@font-face {
+    font-family: mainhomeimport;
+    src: url('/fonts/mainhome.tff');
+}
+.nav-bg{
+    background-color: #00475e;
+}
+.navbar{
+    border-bottom: 5px solid #ffc600;
+}
+.bg-custom{
+    font-weight: bold;
+    background-color: #09434c;
+    padding-bottom: 5px;
+    padding-right: 4px;
+    padding-left: 4px;
+    border-radius: 10px;
+}
+
+
+#another-content{
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image:  url("/images/bg-image/psm.jpg");
+}
+
+#content-two{
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image:  url("/images/bg-image/about.jpg");
+}
+

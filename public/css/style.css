@@ -142,7 +142,7 @@ input:focus, select:focus, textarea:focus {
 
 
 .play-wraper{
-    margin-top: 5%;
+    margin-top: 25%;
 }
 .modal-dialog {
     min-height: calc(100vh - 60px);

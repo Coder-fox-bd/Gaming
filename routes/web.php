@@ -15,6 +15,8 @@ Route::get('/','GuestHomeController@guestView')->name('guest.home');
 Route::get('/login','LoginController@loginView')->name('user.login');
 Route::post('/login','LoginController@logUserVarify')->name('user.logUserVarify');
 Route::get('/register','RegistrationController@registrationView')->name('user.registrationView');
+Route::get('/username','RegistrationController@usernameCheck')->name('user.usernameCheck');
+Route::get('/email','RegistrationController@emailCheck')->name('user.emailCheck');
 Route::post('/register','RegistrationController@storeUser')->name('user.storeUser');
 
 Route::get('password-reminder', [

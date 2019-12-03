@@ -20,17 +20,15 @@
             border-radius: 10px;
         }
     </style>
-    @foreach($datas as $data)
-        @if(!$data->win_prize)
-            <div class="play-wraper">
+    <div class="play-wraper">
+        @foreach($datas as $data)
+            @if(!$data->win_prize)
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
                         <h2 style="color: red">Oops! Sorry. No Match Available.</h2>
                     </div>
                 </div>
-            </div>
-        @else
-            <div class="play-wraper">
+            @else
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
@@ -93,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif
-    @endforeach
+            @endif
+        @endforeach
+    </div>
 @endsection

@@ -34,4 +34,23 @@ class RegistrationController extends Controller
       $User->save();
       return redirect('/login');
     }
+    public function usernameCheck(Request $request)
+    {
+        $user=AppUser::where('user_username',$request->user_name)->first();
+        if($user){
+            echo "Unique";
+        }else{
+            echo "Not Unique";
+        }
+    }
+
+    public function emailCheck(Request $request)
+    {
+        $user=AppUser::where('user_email',$request->email)->first();
+        if($user){
+            echo "Unique";
+        }else{
+            echo "Not Unique";
+        }
+    }
 }
