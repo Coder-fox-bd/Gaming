@@ -63,5 +63,4 @@
             </div>
         </div>
     </div>
-    <a href="{{route('admin.adminLogout')}}">Logout</a>
 @endsection

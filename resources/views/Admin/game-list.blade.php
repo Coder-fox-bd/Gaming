@@ -31,7 +31,6 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Game Name</th>
-                            <th scope="col">Game Name</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -47,7 +46,6 @@
                                 <tr>
                                     <th scope="row">{{$i}}</th>
                                     <td>{{$game->game_name}}</td>
-                                    <td>{{$game->game_types}}</td>
                                     <td><a data-toggle="modal" data-target="#exampleModalCenter{{$i}}" style="color: red"><i class="fas fa-trash-alt"></i></a></td>
                                 </tr>
 
