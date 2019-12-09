@@ -3,28 +3,45 @@
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
 @endsection
 @section('title')
-    Match List
+    Notification
 @endsection
 @section('container')
     <style>
         body {
-            background: #ffd89b;
-            background: -webkit-linear-gradient(to right, #ffd89b, #19547b);
-            background: linear-gradient(to right, #ffd89b, #19547b);
+            background: white;
             min-height: 100vh;
         }
+        .bg-unread{
+            background-color: #d2d7b4;
+        }
     </style>
-    <div class="play-wraper">
+    <div class="play-wraper" style="margin-top: 21%">
         <div class="row">
-            <div class="col-12 p-0 mt-2">
-                <div class="row">
-                    <div class="col-12">
-                        @php
-                            date_default_timezone_set('Asia/Dhaka');
-                            echo date('Y-m-d H:i:s');
-                        @endphp
-                    </div>
-                </div>
+            <div class="col-12 p-0 mt-2 bg-white">
+                <hr>
+                @foreach($notification as $notifi)
+                    @if($notifi->status==1)
+                        <a href="{{route('admin.fullNotification', [$notifi->admin_inbox_id])}}" style="text-decoration: none; color: black">
+                            <div class="bg-unread" style="padding-left: 8px;">
+                                <div class="small text-gray-500">{{$notifi->date}}</div>
+                                You have a {{$notifi->admin_inbox_subject}} request!
+                            </div>
+                        </a>
+                        <hr>
+                    @endif
+                @endforeach
+
+                @foreach($notification as $notifi)
+                    @if($notifi->status==0)
+                        <a href="{{route('admin.fullNotification', [$notifi->admin_inbox_id])}}" style="text-decoration: none; color: black">
+                            <div style="padding-left: 8px;">
+                                <div class="small text-gray-500">{{$notifi->date}}</div>
+                                You have a {{$notifi->admin_inbox_subject}} request!
+                            </div>
+                        </a>
+                        <hr>
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>

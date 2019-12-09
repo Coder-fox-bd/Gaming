@@ -76,6 +76,8 @@ Route::group(['middleware'=>['AdminSess']],function (){
     Route::get('/p4m.admin.login/match-list','MatchController@matchList')->name('admin.matchList');
     Route::get('/p4m.admin.login/match-list/{id}','MatchController@deleteMatch')->name('admin.deleteMatch');
     Route::get('/p4m.admin.login/notification','AdminNotificationController@notificationView')->name('admin.notificationView');
+    Route::get('/p4m.admin.login/notification/{id}','AdminNotificationController@fullNotification')->name('admin.fullNotification');
+    Route::get('/p4m.admin.login/update-status/{uid}','AdminNotificationController@updateStatus')->name('admin.updateStatus');
     Route::get('/p4m.admin.login/game-list','AdminHomeController@gameList')->name('admin.gameList');
     Route::get('/p4m.admin.login/game-list/{id}','AdminHomeController@deleteGame')->name('admin.deleteGame');
 });

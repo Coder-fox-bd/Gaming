@@ -71,6 +71,7 @@ class MatchPlayerSearchController extends Controller
         $player_resut = AppUser::leftjoin('users_joined_in_match','users_joined_in_match.joined_user_id','user_info.user_id')
             ->where('user_id',$id)->first();
         $match = AddMatch::where('match_id', $player_resut->match_id)->first();
+        dd($player_resut);
         $Admin= AppAdmin::where('admin_id',$request->session()->get('loggedAdmin'))->get();
             return view('Admin.add-result')
                 ->with('player_resut',$player_resut)

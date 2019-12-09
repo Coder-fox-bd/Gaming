@@ -6,6 +6,8 @@ use App\AdminInbox;
 use App\AppUser;
 use App\AppUserBalance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 class TransactionController extends Controller
 {
@@ -39,9 +41,22 @@ class TransactionController extends Controller
                 $up_balance = AppUserBalance::find($User->user_id);
                 $new_balance = $up_balance->balance_amount-$request->amount_withdraw;
                 $up_balance->balance_amount=$new_balance;
-                $up_balance->save();
-                $request->session()->flash('message','Your withdraw request has been submitted!');
-                return back();
+
+                if ($up_balance->save()){
+                    $name= "$User->user_first_name $User->user_last_name";
+                    $username = $User->user_username;
+                    $number = $request->mobile_number;
+                    $amount_withdraw =$request->amount_withdraw;
+                    $withdraw_method = $request->withdow_method;
+                    $to_mail = 'playformoneyweb@gmail.com';
+                    $data=array("name"=>$name,"username"=>$username,"number"=>$number,"amount_to_add"=>$amount_withdraw,"withdraw_method"=>$withdraw_method);
+                    Mail::send('password.withdraw-notification',$data,function ($message) use ($name,$to_mail,$username,$number,$amount_withdraw,$withdraw_method){
+                        $message->to($to_mail)
+                            ->subject('Withdraw Money Request');
+                    });
+                    $request->session()->flash('message','Your withdraw request has been submitted!');
+                    return back();
+                }
             }
         }else{
             $request->session()->flash('message2','You have insufficient balance!');
@@ -68,7 +83,7 @@ class TransactionController extends Controller
             'bkash'=>'required',
         ]);
 
-        $subject = 'add';
+        $subject = 'add money';
         $account_type = 'bkash';
         $status = 1;
 
@@ -78,8 +93,23 @@ class TransactionController extends Controller
         $add_money_request->amount=$request->amount_to_add;
         $add_money_request->account_type=$account_type;
         $add_money_request->status=$status;
-        $add_money_request->save();
-        $request->session()->flash('message','Your request has been submitted!');
+
+        if ($add_money_request->save()){
+            $name= "$User->user_first_name $User->user_last_name";
+            $username = $User->user_username;
+            $number = $request->bkash;
+            $amount_to_add =$request->amount_to_add;
+            $to_mail = 'playformoneyweb@gmail.com';
+            $data=array("name"=>$name,"username"=>$username,"number"=>$number,"amount_to_add"=>$amount_to_add);
+            Mail::send('password.notification_mail_two',$data,function ($message) use ($name,$to_mail,$username,$number,$amount_to_add){
+                $message->to($to_mail)
+                    ->subject('Add bKash Money Request');
+            });
+            $request->session()->flash('message','Your request has been submitted!');
+            return back();
+        }else{
+            $request->session()->flash('message','Something went wrong!');
+        }
         return back();
 
     }
@@ -102,7 +132,7 @@ class TransactionController extends Controller
             'rocket'=>'required',
         ]);
 
-        $subject = 'add';
+        $subject = 'add money';
         $account_type = 'rocket';
         $status = 1;
 
@@ -112,9 +142,23 @@ class TransactionController extends Controller
         $add_money_request->amount=$request->amount_to_add;
         $add_money_request->account_type=$account_type;;
         $add_money_request->status=$status;
-        $add_money_request->save();
-        $request->session()->flash('message','Your request has been submitted!');
-        return back();
 
+        if ($add_money_request->save()){
+            $name= "$User->user_first_name $User->user_last_name";
+            $username = $User->user_username;
+            $number = $request->rocket;
+            $amount_to_add =$request->amount_to_add;
+            $to_mail = 'playformoneyweb@gmail.com';
+            $data=array("name"=>$name,"username"=>$username,"number"=>$number,"amount_to_add"=>$amount_to_add);
+            Mail::send('password.notification-mail',$data,function ($message) use ($name,$to_mail,$username,$number,$amount_to_add){
+                $message->to($to_mail)
+                    ->subject('Add Rocket Money Request');
+            });
+            $request->session()->flash('message','Your request has been submitted!');
+            return back();
+        }else{
+            $request->session()->flash('message','Something went wrong!');
+        }
+        return back();
     }
 }
