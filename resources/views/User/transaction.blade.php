@@ -88,7 +88,11 @@
                         </div>
                         <div class="row" style="margin-top: 18%">
                             <div class="col-12 text-center" >
-                                <i class="fas fa-coins fa-3x gold" id="balance"><span style="color: white">{{$balance->balance_amount}}</span></i>
+                                @if($balance!==null)
+                                     <i class="fas fa-coins fa-3x gold" id="balance"><span style="color: white">{{$balance->balance_amount}}</span></i>
+                                @else
+                                    <i class="fas fa-coins fa-3x gold" id="balance"><span style="color: white">00</span></i>
+                                @endif
                             </div>
                         </div>
                     </div>

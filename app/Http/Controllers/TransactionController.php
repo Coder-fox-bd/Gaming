@@ -25,42 +25,48 @@ class TransactionController extends Controller
     {
         $User= AppUser::where('user_id',$request->session()->get('loggedUser'))->first();
         $balance = AppUserBalance::where('balance_user_id',$User->user_id)->first();
-        if ($balance->balance_amount>$request->amount_withdraw){
-            $withdraw = new AdminInbox();
-            $subject = 'withdraw';
-            $status = 1;
 
-            $withdraw->user_id=$User->user_id;
-            $withdraw->admin_inbox_subject=$subject;
-            $withdraw->payment_number=$request->mobile_number;
-            $withdraw->amount=$request->amount_withdraw;
-            $withdraw->account_type=$request->withdow_method;
-            $withdraw->status=$status;
-
-            if ($withdraw->save()){
-                $up_balance = AppUserBalance::find($User->user_id);
-                $new_balance = $up_balance->balance_amount-$request->amount_withdraw;
-                $up_balance->balance_amount=$new_balance;
-
-                if ($up_balance->save()){
-                    $name= "$User->user_first_name $User->user_last_name";
-                    $username = $User->user_username;
-                    $number = $request->mobile_number;
-                    $amount_withdraw =$request->amount_withdraw;
-                    $withdraw_method = $request->withdow_method;
-                    $to_mail = 'playformoneyweb@gmail.com';
-                    $data=array("name"=>$name,"username"=>$username,"number"=>$number,"amount_to_add"=>$amount_withdraw,"withdraw_method"=>$withdraw_method);
-                    Mail::send('password.withdraw-notification',$data,function ($message) use ($name,$to_mail,$username,$number,$amount_withdraw,$withdraw_method){
-                        $message->to($to_mail)
-                            ->subject('Withdraw Money Request');
-                    });
-                    $request->session()->flash('message','Your withdraw request has been submitted!');
-                    return back();
-                }
-            }
-        }else{
+        if ($balance==null){
             $request->session()->flash('message2','You have insufficient balance!');
             return back();
+        }else{
+            if ($balance->balance_amount>$request->amount_withdraw){
+                $withdraw = new AdminInbox();
+                $subject = 'withdraw';
+                $status = 1;
+
+                $withdraw->user_id=$User->user_id;
+                $withdraw->admin_inbox_subject=$subject;
+                $withdraw->payment_number=$request->mobile_number;
+                $withdraw->amount=$request->amount_withdraw;
+                $withdraw->account_type=$request->withdow_method;
+                $withdraw->status=$status;
+
+                if ($withdraw->save()){
+                    $up_balance = AppUserBalance::find($User->user_id);
+                    $new_balance = $up_balance->balance_amount-$request->amount_withdraw;
+                    $up_balance->balance_amount=$new_balance;
+
+                    if ($up_balance->save()){
+                        $name= "$User->user_first_name $User->user_last_name";
+                        $username = $User->user_username;
+                        $number = $request->mobile_number;
+                        $amount_withdraw =$request->amount_withdraw;
+                        $withdraw_method = $request->withdow_method;
+                        $to_mail = 'playformoneyweb@gmail.com';
+                        $data=array("name"=>$name,"username"=>$username,"number"=>$number,"amount_to_add"=>$amount_withdraw,"withdraw_method"=>$withdraw_method);
+                        Mail::send('password.withdraw-notification',$data,function ($message) use ($name,$to_mail,$username,$number,$amount_withdraw,$withdraw_method){
+                            $message->to($to_mail)
+                                ->subject('Withdraw Money Request');
+                        });
+                        $request->session()->flash('message','Your withdraw request has been submitted!');
+                        return back();
+                    }
+                }
+            }else{
+                $request->session()->flash('message2','You have insufficient balance!');
+                return back();
+            }
         }
 
     }

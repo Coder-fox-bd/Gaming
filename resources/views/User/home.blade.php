@@ -51,6 +51,7 @@
                                         <div class="col-4 text-center">
                                             <h6 class="red-font">Entry Fee</h6>
                                             <h6 class="mt-3">{{$data->entry_fee}}</h6>
+                                            <p style="margin:0px; font-size: 10px;">(per person)</p>
                                         </div>
                                     </div>
                                     @php

@@ -40,38 +40,43 @@ class SubmitJoiningReqController extends Controller
         }else{
             $Match=AddMatch::where('match_id', $request->match_id)->first();
             $pre_balance = AppUserBalance::where('balance_user_id',$User->user_id)->first();
-            $Balance = AppUserBalance::find($pre_balance->balance_id);
 
-            if ($Match->type==1){
-                $new_balance = $pre_balance->balance_amount-$Match->entry_fee;
-                $entry_fee = $Match->entry_fee;
-            }elseif ($Match->type==2){
-                $new_balance = $pre_balance->balance_amount-($Match->entry_fee*2);
-                $entry_fee = $Match->entry_fee*2;
-            }else{
-                $new_balance = $pre_balance->balance_amount-($Match->entry_fee*4);
-                $entry_fee = $Match->entry_fee*4;
-            }
-
-
-            if ($pre_balance->balance_amount<$entry_fee){
-                $request->session()->flash('message3','You have insufficient Balance.');
+            if ($pre_balance==null){
+                $request->session()->flash('message3','You did not added any money to your account');
                 return back();
             }else{
-                $JoinMatch = new AppMatchJoinedPlayer();
+                $Balance = AppUserBalance::find($pre_balance->balance_id);
+                if ($Match->type==1){
+                    $new_balance = $pre_balance->balance_amount-$Match->entry_fee;
+                    $entry_fee = $Match->entry_fee;
+                }elseif ($Match->type==2){
+                    $new_balance = $pre_balance->balance_amount-($Match->entry_fee*2);
+                    $entry_fee = $Match->entry_fee*2;
+                }else{
+                    $new_balance = $pre_balance->balance_amount-($Match->entry_fee*4);
+                    $entry_fee = $Match->entry_fee*4;
+                }
 
-                $JoinMatch->joined_user_id=$User->user_id;
-                $JoinMatch->match_id=$request->match_id;
-                $JoinMatch->game_user_name_one=$request->game_user_name_one;
-                $JoinMatch->game_user_name_two=$request->game_user_name_two;
-                $JoinMatch->game_user_name_three=$request->game_user_name_three;
-                $JoinMatch->game_user_name_four=$request->game_user_name_four;
-                if ($JoinMatch->save()){
-                    $Balance->balance_amount=$new_balance;
-                    $Balance->save();
-                    $match_id =$request->match_id;
-                    $request->session()->flash('message','You joined the match successfully');
-                    return redirect()->to('/wait/'.$match_id);
+
+                if ($pre_balance->balance_amount<$entry_fee){
+                    $request->session()->flash('message3','You have insufficient Balance.');
+                    return back();
+                }else{
+                    $JoinMatch = new AppMatchJoinedPlayer();
+
+                    $JoinMatch->joined_user_id=$User->user_id;
+                    $JoinMatch->match_id=$request->match_id;
+                    $JoinMatch->game_user_name_one=$request->game_user_name_one;
+                    $JoinMatch->game_user_name_two=$request->game_user_name_two;
+                    $JoinMatch->game_user_name_three=$request->game_user_name_three;
+                    $JoinMatch->game_user_name_four=$request->game_user_name_four;
+                    if ($JoinMatch->save()){
+                        $Balance->balance_amount=$new_balance;
+                        $Balance->save();
+                        $match_id =$request->match_id;
+                        $request->session()->flash('message','You joined the match successfully');
+                        return redirect()->to('/wait/'.$match_id);
+                    }
                 }
             }
 

@@ -7,9 +7,6 @@
 @endsection
 @section('container')
         <style>
-            body{
-                background-color: black;
-            }
             .half-bg-white{
                 background-image: linear-gradient(#000 50%, #ffffff 0%);
                 min-height: 40vh;
@@ -92,18 +89,33 @@
                               <div class="card-body">
                                   <div class="row">
                                       <div class="col-3 p-0 text-center">
-                                          <strong>{{$kills->total_match}}</strong>
-                                          <p class="small-font">Matches Played</p>
+                                          @if($kills!==null)
+                                              <strong>{{$kills->total_match}}</strong>
+                                              <p class="small-font">Matches Played</p>
+                                          @else
+                                              <strong>00</strong>
+                                              <p class="small-font">Matches Played</p>
+                                          @endif
                                       </div>
                                       <div class="topbar-divider d-none d-sm-block"></div>
                                       <div class="col-3 p-0 text-center">
-                                          <strong>{{$kills->kills}}</strong>
-                                          <p class="small-font">Total Kill</p>
+                                          @if($kills!==null)
+                                              <strong>{{$kills->kills}}</strong>
+                                              <p class="small-font">Total Kill</p>
+                                          @else
+                                              <strong>00</strong>
+                                              <p class="small-font">Total Kill</p>
+                                          @endif
                                       </div>
                                       <div class="topbar-divider d-none d-sm-block"></div>
                                       <div class="col-3 p-0 text-center">
-                                          <strong>{{$earns->total_earn_amount}}</strong>
-                                          <p class="small-font">Amount Won</p>
+                                          @if($earns!==null)
+                                              <strong>{{$earns->total_earn_amount}}</strong>
+                                              <p class="small-font">Amount Won</p>
+                                          @else
+                                              <strong>00</strong>
+                                              <p class="small-font">Amount Won</p>
+                                          @endif
                                       </div>
                                   </div>
                               </div>
