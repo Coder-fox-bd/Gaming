@@ -21,6 +21,7 @@ class RegistrationController extends Controller
           'last_name'=>'required',
           'username'=>'required|regex:/^[A-Z.a-z0-9_-]{3,20}$/',
           'email'=>'required',
+          'mobile'=>'required',
           'password'=>'required',
           'confirm_password'=>'required|same:password',
       ]);
@@ -30,6 +31,7 @@ class RegistrationController extends Controller
       $User->user_last_name=$request->last_name;
       $User->user_username=$request->username;
       $User->user_email=$request->email;
+      $User->mobile=$request->mobile;
       $User->user_password=Hash::make($request->password);
       $User->save();
       return redirect('/login');

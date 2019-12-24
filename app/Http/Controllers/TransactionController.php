@@ -43,7 +43,8 @@ class TransactionController extends Controller
                 $withdraw->status=$status;
 
                 if ($withdraw->save()){
-                    $up_balance = AppUserBalance::find($User->user_id);
+                    $pre_balance = AppUserBalance::where('balance_user_id',$User->user_id)->first();
+                    $up_balance = AppUserBalance::find($pre_balance->balance_id);
                     $new_balance = $up_balance->balance_amount-$request->amount_withdraw;
                     $up_balance->balance_amount=$new_balance;
 

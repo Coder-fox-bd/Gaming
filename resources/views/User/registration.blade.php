@@ -41,6 +41,7 @@
                 <span id="user_error"></span>
                 <input type="email" name="email" id="email" placeholder="Email" required />
                 <span id="email_error"></span>
+                <input type="number" name="mobile" id="mobile" placeholder="Mobile Number" required />
                 <input type="password" name="password" id="password" placeholder="Password" required />
                 <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required />
             </div>

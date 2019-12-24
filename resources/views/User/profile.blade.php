@@ -7,9 +7,8 @@
 @endsection
 @section('container')
         <style>
-            .half-bg-white{
-                background-image: linear-gradient(#000 50%, #ffffff 0%);
-                min-height: 40vh;
+            body{
+                background: black;
             }
             .topbar-divider {
                 width: 0;
@@ -62,29 +61,23 @@
         </style>
       <div class="play-wraper mt-0">
           <div class="row">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 bg-white" style="margin-top: 13%;">
-                  <div class="row">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center half-bg-white">
-                          <div class="container my-4">
-                              <!--Grid row-->
-                              <div class="row">
-                                  <!--Grid column-->
-                                  <div class="col-md-12 mb-4">
-                                      <img class="rounded-circle" alt="100x100" width="130" height="150" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ84QCzDFx7xHu10V3F4HtgnCqDbGXYSlzAXQlCTygqiD9aY_mB&s"
-                                           data-holder-rendered="true" id="image">
-                                      <h6>{{$users->user_first_name}} {{$users->user_last_name}}</h6>
-                                      @if($balance)
-                                          <h6>Balance Tk.{{$balance->balance_amount}}</h6>
-                                      @else
-                                          <h6>Balance Tk.00</h6>
-                                      @endif
-                                  </div>
-                              </div>
-                          </div>
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 13%;">
+                  <div class="row bg-white" style="border-radius: .25rem;">
+                      <div class="col-6" style="margin-top: 4%;">
+                          <img alt="100x100" width="130" height="150" src="{{asset('images/icons')}}/profile.png">
+                      </div>
+                      <div class="col-6" style="margin-top: 14%;">
+                          <h6>{{$users->user_first_name}} {{$users->user_last_name}}</h6>
+                          @if($balance)
+                              <h6>Balance Tk.{{$balance->balance_amount}}</h6>
+                          @else
+                              <h6>Balance Tk.00</h6>
+                          @endif
                       </div>
                   </div>
+
                   <div class="row">
-                      <div class="col-md-12 p-0">
+                      <div class="col-md-12 p-0 mt-3">
                           <div class="card">
                               <div class="card-body">
                                   <div class="row">
