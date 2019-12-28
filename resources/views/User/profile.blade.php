@@ -58,16 +58,30 @@
                 box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
                 border-bottom: solid 2px #d8d8d8;
             }
+            .card{
+                background-color: #2095f3;
+                margin-bottom: 0px;
+            }
+            .button {
+                background-color: #2095f3;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                border-radius: .25rem;
+            }
         </style>
       <div class="play-wraper mt-0">
           <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-top: 13%;">
                   <div class="row bg-white" style="border-radius: .25rem;">
-                      <div class="col-6" style="margin-top: 4%;">
+                      <div class="col-6" style="margin-top: 10%;">
                           <img alt="100x100" width="130" height="150" src="{{asset('images/icons')}}/profile.png">
                       </div>
-                      <div class="col-6" style="margin-top: 14%;">
-                          <h6>{{$users->user_first_name}} {{$users->user_last_name}}</h6>
+                      <div class="col-6 text-center" style="margin-top: 21%;">
+                          <button class="button"><h6>{{$users->user_first_name}} {{$users->user_last_name}}</h6></button>
                           @if($balance)
                               <h6>Balance Tk.{{$balance->balance_amount}}</h6>
                           @else
@@ -81,7 +95,7 @@
                           <div class="card">
                               <div class="card-body">
                                   <div class="row">
-                                      <div class="col-3 p-0 text-center">
+                                      <div class="col-3 text-center" style="color: white;">
                                           @if($kills!==null)
                                               <strong>{{$kills->total_match}}</strong>
                                               <p class="small-font">Matches Played</p>
@@ -91,7 +105,7 @@
                                           @endif
                                       </div>
                                       <div class="topbar-divider d-none d-sm-block"></div>
-                                      <div class="col-3 p-0 text-center">
+                                      <div class="col-3 text-center" style="color: white;">
                                           @if($kills!==null)
                                               <strong>{{$kills->kills}}</strong>
                                               <p class="small-font">Total Kill</p>
@@ -101,7 +115,7 @@
                                           @endif
                                       </div>
                                       <div class="topbar-divider d-none d-sm-block"></div>
-                                      <div class="col-3 p-0 text-center">
+                                      <div class="col-3 text-center" style="color: white;">
                                           @if($earns!==null)
                                               <strong>{{$earns->total_earn_amount}}</strong>
                                               <p class="small-font">Amount Won</p>
@@ -115,30 +129,35 @@
                           </div>
                       </div>
                   </div>
-                  <div class="row mt-5 bg-white">
-                      <div class="col-4 text-center">
-                          <a href="{{route('user.transactionView')}}" class="rounded-btn"><i class="fa fa-wallet"></i></a>
-                          <p>My Wallet</p>
-                      </div>
-                      <div class="col-4 text-center">
-                          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/PlayForMoneyP4M/.com&display=popup" class="rounded-btn">
-                              <i class="fa fa-share-alt"></i>
-                          </a>
-                          <p>Share</p>
-                      </div>
-                      <div class="col-4 text-center">
-                          <a class="rounded-btn" data-toggle="modal" data-target="#exampleModal" style="color: rgba(3, 169, 244, 0.54); cursor: pointer;">
-                              <i class="fa fa-concierge-bell"></i>
-                          </a>
-                          <p>Support</p>
-                      </div>
-                  </div>
-                  <div class="row">
-                      <div class="col-12 text-center">
-                          <a href="{{route('user.logout')}}" class="rounded-btn">
-                              <i class="fa fa-power-off"></i>
-                          </a>
-                          <p>Logout</p>
+
+
+                  <div class="row mt-3">
+                      <div class="col-12 p-0">
+                          <table class="table bg-white">
+                              <tbody>
+                              <tr onclick="location.href='{{route('user.transactionView')}}';" style="cursor: pointer;">
+                                  <th scope="row" width="10%"><i class="fas fa-wallet"></i></th>
+                                  <td>My Wallet</td>
+                                  <td width="10%"><a href="{{route('user.transactionView')}}"><i class="fas fa-chevron-right"></i></a></td>
+                              </tr>
+                              <tr onclick="location.href='https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/PlayForMoneyP4M/.com&display=popup';" style="cursor: pointer;">
+                                  <th scope="row" width="10%"><i class="fas fa-share-alt"></i></th>
+                                  <td>Share</td>
+                                  <td width="10%"><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/PlayForMoneyP4M/.com&display=popup"><i class="fas fa-chevron-right"></i></a></td>
+                              </tr>
+                              <tr data-toggle="modal" data-target="#exampleModal" style="cursor: pointer;">
+                                  <th scope="row" width="10%"><i class="fas fa-headset"></i></th>
+                                  <td>Support</td>
+                                  <td width="10%"><a style="color:#007bff;"><i class="fas fa-chevron-right"></i></a></td>
+
+                              </tr>
+                              <tr onclick="location.href='{{route('user.logout')}}';" style="cursor: pointer;">
+                                  <th scope="row" width="10%"><i class="fas fa-sign-out-alt"></i></th>
+                                  <td>Logout</td>
+                                  <td width="10%"><a href="{{route('user.logout')}}"><i class="fas fa-chevron-right"></i></a></td>
+                              </tr>
+                              </tbody>
+                          </table>
                       </div>
                   </div>
               </div>
@@ -151,16 +170,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
+                    <p>If you need any help please send us message through <a href="https://www.facebook.com/PlayForMoneyP4M">Facebook</a> or drop an email on <strong>support@playformoney.net</strong>. One of our team member will reach you as soon as possible.</p>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
