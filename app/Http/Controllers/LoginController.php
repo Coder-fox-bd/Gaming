@@ -21,7 +21,14 @@ class LoginController extends Controller
             'password'=>'required',
         ]);
 
-        $User= AppUser::where('user_username',$request->user_username)->first();
+        $email = $request->user_username;
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $User= AppUser::where('user_email',$request->user_username)->first();
+        } else {
+            $User= AppUser::where('user_username',$request->user_username)->first();
+        }
+
         if ($User && Hash::check($request->password,$User->user_password)){
             $request->session()->put('loggedUser',$User->user_id);
             return redirect('/play');

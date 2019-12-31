@@ -55,6 +55,7 @@ class MatchController extends Controller
             $store_match = new StoreMatch();
 
             $store_match->store_match_id=$id;
+            $store_match->match_game_id=$request->match_game_id;
             $store_match->match_time=$request->match_start;
             $store_match->match_date=$request->date;
             $store_match->win_prize=$request->win_prize;

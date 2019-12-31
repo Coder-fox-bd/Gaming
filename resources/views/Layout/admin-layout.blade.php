@@ -57,6 +57,9 @@
                 <a href="{{route('admin.userSearchView')}}" class="nav-link">Search User</a>
             </li>
             <li class="nav-item">
+                <a href="{{route('admin.userList')}}" class="nav-link">User List</a>
+            </li>
+            <li class="nav-item">
                 <a href="{{route('admin.notificationView')}}" class="nav-link">Notifications</a>
             </li>
             <li class="nav-item">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AddGame;
 use App\AppUser;
 use App\GameResult;
 use App\StoreMatch;
@@ -11,7 +12,7 @@ class ResultController extends Controller
 {
     public function resultView(Request $request)
     {
-        $matchs = StoreMatch::take(3)->get();
+        $matchs = StoreMatch::leftjoin('all_games','game_id','store_match.match_game_id')->take(50)->orderBy('store_match_id','desc')->get();
         $User= AppUser::where('user_id',$request->session()->get('loggedUser'))->get();
         return view('User.result')
             ->with('matchs',$matchs)

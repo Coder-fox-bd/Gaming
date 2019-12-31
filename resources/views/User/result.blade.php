@@ -51,13 +51,16 @@
                         $i++;
                     @endphp
                     <div class="row mt-3 pt-3 pb-3 bg-yellow">
-                        <div class="col-4 p-0 text-center">
+                        <div class="col-3 p-0 text-center">
                             <p>{{$match->match_date}}</p>
                         </div>
-                        <div class="col-4 p-0 text-center">
+                        <div class="col-3 p-0 text-center">
+                            <p>{{$match->game_name}}</p>
+                        </div>
+                        <div class="col-3 p-0 text-center">
                             <p>{{$match->match_time}}</p>
                         </div>
-                        <div class="col-4 p-0 text-center">
+                        <div class="col-3 p-0 text-center">
                             <input type="hidden" id="value{{$i}}" value="{{$match->store_match_id}}">
                             <button class="bnt btn-primary" id="search{{$i}}">
                                 Show
