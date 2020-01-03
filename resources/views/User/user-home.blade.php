@@ -76,7 +76,7 @@
                                 <img src="{{asset('images/icons')}}/test.png" alt="" style="max-width: 40px; max-height: 40px; margin-top: 10px; margin-bottom: 10px;">
                             </div>
                             <div class="col-5 p-0 text-center">
-                                <p style="color: black; margin-top: 16px;">Play For Money</p>
+                                <p style="color: black; margin-top: 17px; font-size: 14px;">Play For Money</p>
                             </div>
                             <div class="col-4 p-0 text-center">
                                 <a href="https://www.youtube.com/channel/UC2O-PK11Ao3llIdZLQzqA-A?fbclid=IwAR2sMzuRJC_wl_Hl_l_QNiBJNbXWQeMtLew2RRMcUSWUpGsN3sMhGPNE6cY" class="button-one" style="text-decoration: none;">SUBSCRIBE</a>
@@ -93,7 +93,7 @@
                                 <img src="{{asset('images/icons')}}/test.png" alt="" style="max-width: 40px; max-height: 40px; margin-top: 10px; margin-bottom: 10px;">
                             </div>
                             <div class="col-5 p-0 text-center">
-                                <p style="color: black; margin-top: 16px;">Play For Money</p>
+                                <p style="color: black; margin-top: 17px; font-size: 14px;">Play For Money</p>
                             </div>
                             <div class="col-4 p-0 text-center">
                                 <a href="https://www.facebook.com/PlayForMoneyP4M" class="button-two" style="text-decoration: none;"><i class="far fa-thumbs-up"></i>Like</a>
@@ -110,7 +110,7 @@
                                 <img src="{{asset('images/icons')}}/test.png" alt="" style="max-width: 40px; max-height: 40px; margin-top: 10px; margin-bottom: 10px;">
                             </div>
                             <div class="col-5 p-0 text-center">
-                                <p style="color: black; margin-top: 16px;">Play For Money</p>
+                                <p style="color: black; margin-top: 17px; font-size: 14px;">Play For Money</p>
                             </div>
                             <div class="col-4 p-0 text-center">
                                 <a href="https://www.instagram.com/playformoney_p4m/?fbclid=IwAR2xS6nl2T-J3nK4oTT3EOFhLvIaBUwWUIYVFQcZv4wZczGpVlpfeW7j5JA" class="button-three" style="text-decoration: none;"><i class="fab fa-instagram"></i>Follow</a>

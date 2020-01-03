@@ -34,7 +34,8 @@ class RegistrationController extends Controller
       $User->mobile=$request->mobile;
       $User->user_password=Hash::make($request->password);
       $User->save();
-      return redirect('/login');
+        $request->session()->flash('message2','Registration successful. Login here.');
+        return redirect('/login');
     }
     public function usernameCheck(Request $request)
     {

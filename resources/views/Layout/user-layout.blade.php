@@ -113,8 +113,8 @@
             </div>
         </div>
     </div>
-    </div>
 </div>
+
 <footer id="sticky-footer" class="py-3 bg-white">
     <div class="container text-center">
         <small>Copyright &copy; <a href="https://github.com/Coder-fox-bd">PLAY FOR MONEY</a></small>
