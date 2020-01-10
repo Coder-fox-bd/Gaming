@@ -27,34 +27,14 @@ class ResultController extends Controller
             $data = StoreMatch::where('store_match_id', $searched)->first();
             $results = GameResult::where('result_match_id', $searched)->get();
             if ($data) {
-                $output .= '<div class="row">' .
-                    '<div class="col-12 pt-3 text-center bg-white">' .
-                    '<h6><strong>Match Organized on</strong></h6>' .
-                    '<p>' . $data->match_date . ' at ' . $data->match_time . '</p>' .
-                    '</div>' .
-                    '</div>' .
-                    '<div class="row mt-3 pt-3 pb-3 bg-white">' .
-                    '<div class="col-4 p-0 text-center">' .
-                    '<p>Win Prize</p>' .
-                    '<strong>' . $data->win_prize . '</strong>' .
-                    '</div>' .
-                    '<div class="col-4 p-0 text-center">' .
-                    '<p>Per Kill</p>' .
-                    '<strong>' . $data->per_kill . '</strong>' .
-                    '</div>' .
-                    '<div class="col-4 p-0 text-center">' .
-                    '<p>Entry Fee</p>' .
-                    '<strong>' . $data->entry_fee . '</strong>' .
-                    '</div>' .
-                    '</div>' .
-                    '<div class="row mt-3 bg-yellow">' .
+                $output .= '<div class="row mt-3 bg-yellow">' .
                     '<div class="col-12 pt-1 pb-1 text-center">' .
                     '<strong>WINNER OF THE MATCH</strong>' .
                     '</div>' .
                     '</div>';
                 $output .= '<div class="row mt-2">' .
                     '<div class="col-12 p-0 mt-2">' .
-                    '<table class="table table-light text-center">' .
+                    '<table class="table text-center" style="background-color: #212529">' .
                     '<thead class="thead-dark border-0">' .
                     '<tr>' .
                     '<th scope="col">#</th>' .
@@ -135,7 +115,7 @@ class ResultController extends Controller
                     '</div>' .
                     '<div class="row mt-2">' .
                     '<div class="col-12 p-0 mt-2">' .
-                    '<table class="table table-light text-center">' .
+                    '<table class="table text-center" style="background-color: #212529">' .
                     '<thead class="thead-dark border-0">' .
                     '<tr>' .
                     '<th scope="col">#</th>' .

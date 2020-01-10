@@ -12,8 +12,8 @@
             min-height: 100vh;
         }
         .half-bg-black{
-            background-color: black;
-            min-height: 35vh;
+            background-color: #d53a40;
+            min-height: 36vh;
         }
         html { font-size: .90rem; }
 
@@ -50,7 +50,7 @@
             color: black;
         }
         .gold{
-            color: #b88c00;
+            color: white;
         }
         .instraction{
             background-color: black;
@@ -86,12 +86,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 18%">
+                        <div class="row" style="margin-top: 16%">
                             <div class="col-12 text-center" >
                                 @if($balance!==null)
-                                     <i class="fas fa-coins fa-3x gold" id="balance"><span style="color: white">{{$balance->balance_amount}}</span></i>
+                                     <i class="fas fa-dollar-sign fa-3x gold" id="balance"><span style="color: white"> {{$balance->balance_amount}}</span></i>
                                 @else
-                                    <i class="fas fa-coins fa-3x gold" id="balance"><span style="color: white">00</span></i>
+                                    <i class="fas fa-dollar-sign fa-3x gold" id="balance"><span style="color: white"> 00</span></i>
                                 @endif
                             </div>
                         </div>

@@ -71,12 +71,11 @@ class MatchPlayerSearchController extends Controller
         $player_resut = AppUser::leftjoin('users_joined_in_match','users_joined_in_match.joined_user_id','user_info.user_id')
             ->where('user_id',$id)->first();
         $match = AddMatch::where('match_id', $player_resut->match_id)->first();
-        dd($player_resut);
         $Admin= AppAdmin::where('admin_id',$request->session()->get('loggedAdmin'))->get();
-            return view('Admin.add-result')
-                ->with('player_resut',$player_resut)
-                ->with('match',$match)
-                ->with('Admin',$Admin);
+        return view('Admin.add-result')
+            ->with('player_resut',$player_resut)
+            ->with('match',$match)
+            ->with('Admin',$Admin);
 
     }
 
@@ -122,7 +121,7 @@ class MatchPlayerSearchController extends Controller
                     if ($Kills->save()){
                         $total_earn = TotalEarn::where('player_id',$request->joined_user_id)->first();
                         if ($total_earn){
-                            $update_amount = TotalEarn::find($total_earn->player_id);
+                            $update_amount = TotalEarn::find($total_earn->earn_id);
 
                             if ($request->winner!=null){
                                 $new_amount =$update_amount->total_earn_amount+($match->per_kill*$kills)+$match->win_prize;
@@ -139,7 +138,11 @@ class MatchPlayerSearchController extends Controller
                         }else{
                             $update_amount = new TotalEarn();
 
-                            $new_amount =$match->per_kill*$kills;
+                            if ($request->winner!=null){
+                                $new_amount =($match->per_kill*$kills)+$match->win_prize;
+                            }else{
+                                $new_amount =$match->per_kill*$kills;
+                            }
 
                             $update_amount->player_id=$request->joined_user_id;
                             $update_amount->total_earn_amount=$new_amount;

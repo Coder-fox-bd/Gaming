@@ -7,6 +7,9 @@
 @endsection
 @section('container')
     <style>
+        body{
+            background-color: #212529;
+        }
         .btn-primary{
             padding: 3px 20px;
             background-color: #608fc2;
@@ -18,6 +21,30 @@
         }
         .card{
             border-radius: 10px;
+        }
+        .card-header{
+            padding: 0.5rem 1.25rem;
+        }
+        .btn-resize{
+            padding: 5px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            width: 30%;
+        }
+        .btn-resize_lobby{
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 18px;
+            padding-right: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            width: 30%;
+        }
+        p{
+            margin-bottom: 0px;
+        }
+        .play-wraper{
+            margin-top: 28%;
         }
     </style>
     <div class="play-wraper">
@@ -34,23 +61,23 @@
                         <div class="card">
                             <div class="card-header" style="background-color: red;">
                                 <div class="text-center">
-                                    <h3 style="color: white;">{{$data->game_name}}</h3>
+                                    <h4 style="color: white;">{{$data->game_name}} {{$data->match_code}}</h4>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-4 text-center">
-                                            <h6 class="red-font">Win Prize</h6>
-                                            <h6 class="mt-3">{{$data->win_prize}}</h6>
+                                            <p class="red-font" style="font-size:14px; font-weight: bold;">Win Prize</p>
+                                            <p style="font-size:14px; font-weight: bold;">{{$data->win_prize}}</p>
                                         </div>
                                         <div class="col-4 text-center">
-                                            <h6 class="red-font">Per Kill</h6>
-                                            <h6 class="mt-3">{{$data->per_kill}}</h6>
+                                            <p class="red-font" style="font-size:14px; font-weight: bold;">Per Kill</p>
+                                            <p style="font-size:14px; font-weight: bold;">{{$data->per_kill}}</p>
                                         </div>
                                         <div class="col-4 text-center">
-                                            <h6 class="red-font">Entry Fee</h6>
-                                            <h6 class="mt-3">{{$data->entry_fee}}</h6>
+                                            <p class="red-font" style="font-size:14px; font-weight: bold;">Entry Fee</p>
+                                            <p style="font-size:14px; font-weight: bold;">{{$data->entry_fee}}</p>
                                             <p style="margin:0px; font-size: 10px;">(per person)</p>
                                         </div>
                                     </div>
@@ -65,16 +92,16 @@
                                     @endphp
                                     <div class="row mt-1">
                                         <div class="col-4 text-center">
-                                            <h6 class="red-font">Type</h6>
-                                            <h6 class="mt-3">{{$type}}</h6>
+                                            <p class="red-font" style="font-size:14px; font-weight: bold;">Type</p>
+                                            <p style="font-size:14px; font-weight: bold;">{{$type}}</p>
                                         </div>
                                         <div class="col-4 text-center">
-                                            <h6 class="red-font">Version</h6>
-                                            <h6 class="mt-3">{{$data->version}}</h6>
+                                            <p class="red-font" style="font-size:14px; font-weight: bold;">Version</p>
+                                            <p style="font-size:14px; font-weight: bold;">{{$data->version}}</p>
                                         </div>
                                         <div class="col-4 text-center">
-                                            <h6 class="red-font">Map</h6>
-                                            <h6 class="mt-3">{{$data->map}}</h6>
+                                            <p class="red-font" style="font-size:14px; font-weight: bold;">Map</p>
+                                            <p style="font-size:14px; font-weight: bold;">{{$data->map}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -84,7 +111,8 @@
                                     </div>
                                     <div class="row mt-1">
                                         <div class="col-12 text-center">
-                                            <a href="{{route('user.joinView', [$data->match_id])}}" class="btn btn-primary">JOIN NOW</a>
+                                            <a href="{{route('user.waitView', [$data->match_id])}}" class="btn btn-primary btn-resize_lobby">LOBBY</a>
+                                            <a href="{{route('user.joinView', [$data->match_id])}}" class="btn btn-primary btn-resize">JOIN</a>
                                         </div>
                                     </div>
                                 </div>

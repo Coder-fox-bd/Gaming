@@ -32,7 +32,7 @@
     }
     .btn-block{
         border-radius: 10px;
-        margin-top: 30px;
+        margin-top: 15px;
         background-color: #0360c5;
         color: white;
         font-weight: bold;
@@ -75,6 +75,11 @@
                         <div class="form-group-1" style="margin-top: 20%">
                             <input  type="text" class="form-control" name="user_username" placeholder="Type your email or username" required/>
                             <input type="password" class="form-control" name="password" placeholder="Type your password" required/>
+                        </div>
+                        <div class="text-right p-t-8 p-b-31 mt-2">
+                            <a href="{{route('password-reminder')}}">
+                                Forgot password?
+                            </a>
                         </div>
                         <div class="form-submit">
                             <input type="submit" class="btn btn-block" class="btn btn-primary btn-block" value="Login" />
