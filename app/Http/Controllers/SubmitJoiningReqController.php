@@ -62,21 +62,28 @@ class SubmitJoiningReqController extends Controller
                     $request->session()->flash('message3','You have insufficient Balance.');
                     return back();
                 }else{
-                    $JoinMatch = new AppMatchJoinedPlayer();
+                    $already_in = AppMatchJoinedPlayer::where('joined_user_id',$User->user_id)->first();
+                    if (!$already_in) {
+                       $JoinMatch = new AppMatchJoinedPlayer();
 
-                    $JoinMatch->joined_user_id=$User->user_id;
-                    $JoinMatch->match_id=$request->match_id;
-                    $JoinMatch->game_user_name_one=$request->game_user_name_one;
-                    $JoinMatch->game_user_name_two=$request->game_user_name_two;
-                    $JoinMatch->game_user_name_three=$request->game_user_name_three;
-                    $JoinMatch->game_user_name_four=$request->game_user_name_four;
-                    if ($JoinMatch->save()){
-                        $Balance->balance_amount=$new_balance;
-                        $Balance->save();
-                        $match_id =$request->match_id;
-                        $request->session()->flash('message','You joined the match successfully');
-                        return redirect()->to('/wait/'.$match_id);
+                        $JoinMatch->joined_user_id=$User->user_id;
+                        $JoinMatch->match_id=$request->match_id;
+                        $JoinMatch->game_user_name_one=$request->game_user_name_one;
+                        $JoinMatch->game_user_name_two=$request->game_user_name_two;
+                        $JoinMatch->game_user_name_three=$request->game_user_name_three;
+                        $JoinMatch->game_user_name_four=$request->game_user_name_four;
+                        if ($JoinMatch->save()){
+                            $Balance->balance_amount=$new_balance;
+                            $Balance->save();
+                            $match_id =$request->match_id;
+                            $request->session()->flash('message','You joined the match successfully');
+                            return redirect()->to('/wait/'.$match_id);
+                        } 
+                    }else{
+                        $request->session()->flash('message4',"Don't be greedy!");
+                        return redirect()->back();
                     }
+                    
                 }
             }
 
